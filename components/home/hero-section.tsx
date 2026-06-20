@@ -1,100 +1,82 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, FileDown } from 'lucide-react';
-import * as THREE from 'three';
-import NET from 'vanta/dist/vanta.net.min';
+import { ArrowRight, FileDown, Terminal } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { fadeIn, staggerContainer } from '@/lib/motion';
 
 export function HeroSection() {
-	const [vantaEffect, setVantaEffect] = useState<any>(null);
-	const vantaRef = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		if (!vantaEffect && vantaRef.current) {
-			setVantaEffect(
-				NET({
-					el: vantaRef.current,
-					THREE: THREE,
-					mouseControls: true,
-					touchControls: true,
-					gyroControls: false,
-					minHeight: 200.00,
-					minWidth: 200.00,
-					scale: 0.8,
-					scaleMobile: 0.8,
-					color: 0xff3f81,
-					backgroundColor: 0x23153c,
-					points: 10.00,
-					maxDistance: 15.00,
-					spacing: 20.00,
-					showDots: false,
-				})
-			);
-		}
-		return () => {
-			if (vantaEffect) vantaEffect.destroy();
-		};
-	}, [vantaEffect]);
-
 	return (
-		<section className="relative overflow-hidden">
-			{/* Vanta.js Background */}
-			<div ref={vantaRef} className="absolute inset-0 z-0 opacity-60" />
-
+		<section className="relative overflow-hidden w-full min-h-screen flex flex-col items-center justify-center">
 			{/* Content */}
-			<div className="container relative z-10 px-4 py-20 md:py-32 flex flex-col items-center justify-center min-h-[90vh]">
+			<div className="container relative z-10 px-4 flex flex-col items-center justify-center text-center">
 				<motion.div
 					variants={staggerContainer()}
 					initial="hidden"
 					animate="show"
-					className="max-w-3xl mx-auto text-center"
+					className="max-w-4xl mx-auto flex flex-col items-center"
 				>
-					<motion.h2
-						variants={fadeIn('up', 0.2)}
-						className="text-3xl md:text-4xl font-bold mb-4 text-primary"
+					<motion.div
+						variants={fadeIn('up', 0.1)}
+						className="inline-flex items-center gap-2 px-3 py-1 mb-8 rounded-full border border-primary/30 bg-black/40 backdrop-blur-md text-sm font-medium text-primary shadow-[0_0_15px_rgba(var(--primary-rgb),0.3)]"
 					>
-						Computer Science Engineering
-					</motion.h2>
+						<Terminal className="w-4 h-4" />
+						<span>SYSTEM.ONLINE // CS ENGINEER</span>
+					</motion.div>
 
 					<motion.h1
 						variants={fadeIn('up', 0.3)}
-						className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight"
+						className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter uppercase leading-[0.9] mb-6"
 					>
-						<span className="text-gradient">John Doe's</span> Portfolio
+						<span className="block text-transparent bg-clip-text bg-gradient-to-br from-white via-neutral-400 to-neutral-800 drop-shadow-sm">
+							SAKTHIVEL
+						</span>
+						<span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent animate-pulse-slow">
+							PORTFOLIO
+						</span>
 					</motion.h1>
 
 					<motion.p
 						variants={fadeIn('up', 0.5)}
-						className="mt-6 text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto"
+						className="mt-6 text-lg md:text-2xl text-muted-foreground/80 max-w-2xl font-mono tracking-wide"
 					>
-						A showcase of my projects, skills, and achievements in the field of engineering.
+						Engineering intelligent systems. Building digital infrastructure. Designing tomorrow's solutions today.
 					</motion.p>
 
 					<motion.div
 						variants={fadeIn('up', 0.7)}
-						className="mt-10 flex flex-wrap gap-4 justify-center"
+						className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center"
 					>
-						<Button size="lg" asChild>
+						<Button 
+							size="lg" 
+							className="h-14 px-8 text-lg font-bold uppercase tracking-wider rounded-none bg-primary text-black hover:bg-white transition-all duration-300 shadow-[0_0_30px_rgba(var(--primary-rgb),0.5)] hover:shadow-[0_0_50px_rgba(255,255,255,0.8)] border border-primary"
+							asChild
+						>
 							<Link href="/projects">
-								View Projects <ArrowRight className="ml-2 h-4 w-4" />
+								Initialize Projects <ArrowRight className="ml-2 h-5 w-5" />
 							</Link>
 						</Button>
-						<Button size="lg" variant="outline" asChild>
+						<Button 
+							size="lg" 
+							variant="outline" 
+							className="h-14 px-8 text-lg font-bold uppercase tracking-wider rounded-none border-secondary text-secondary hover:bg-secondary/10 hover:text-white transition-all duration-300 backdrop-blur-sm"
+							asChild
+						>
 							<Link href="#" download>
-								Download CV <FileDown className="ml-2 h-4 w-4" />
+								Extract Data <FileDown className="ml-2 h-5 w-5" />
 							</Link>
 						</Button>
 					</motion.div>
 				</motion.div>
 			</div>
 
-			{/* Bottom gradient */}
-			<div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
+			{/* Decorative scanline effect */}
+			<div className="absolute inset-0 z-20 pointer-events-none bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] opacity-20" />
+			
+			{/* Bottom gradient fade out */}
+			<div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-10"></div>
 		</section>
 	);
 }

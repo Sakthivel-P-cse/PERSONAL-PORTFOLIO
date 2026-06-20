@@ -21,16 +21,12 @@ export default function AboutPage() {
 					<motion.div variants={fadeIn('right', 0.3)} className="space-y-6">
 						<h1 className="text-4xl font-bold">About Me</h1>
 						<p className="text-lg text-muted-foreground">
-							I am a passionate engineering student with a focus on innovation and problem-solving.
-							My academic journey has equipped me with strong technical skills and a deep understanding
-							of engineering principles.
+							I am a motivated Computer Science student at Chennai Institute of Technology, seeking a Summer 2026 software development internship. Skilled in full-stack web development, database management, machine learning, and IoT integration.
 						</p>
 						<div className="space-y-4">
 							<h2 className="text-2xl font-semibold">My Journey</h2>
 							<p className="text-muted-foreground">
-								Throughout my academic career, I've been involved in various projects that have
-								helped me develop practical skills and theoretical knowledge. I believe in
-								continuous learning and staying updated with the latest technological advancements.
+								I have a strong foundation in rapid prototyping, problem solving, and collaborative project execution through hands-on academic and hackathon experiences. I believe in continuous learning and staying updated with the latest technological advancements.
 							</p>
 						</div>
 						<Button className="mt-6" asChild>
@@ -62,8 +58,7 @@ export default function AboutPage() {
 							<CardContent className="p-6">
 								<h3 className="text-xl font-semibold mb-4">Education</h3>
 								<p className="text-muted-foreground">
-									Currently pursuing a Bachelor's degree in Engineering with a focus on
-									practical applications and innovative solutions.
+									Currently pursuing a BE in Computer Science Engineering at Chennai Institute of Technology with an 8.3 CGPA.
 								</p>
 							</CardContent>
 						</Card>
@@ -86,8 +81,7 @@ export default function AboutPage() {
 							<CardContent className="p-6">
 								<h3 className="text-xl font-semibold mb-4">Skills</h3>
 								<p className="text-muted-foreground">
-									Proficient in various engineering tools and technologies, with a strong
-									foundation in problem-solving and analytical thinking.
+									Proficient in AI frameworks, full-stack web development, and cloud deployments, with a strong foundation in problem-solving and analytical thinking.
 								</p>
 							</CardContent>
 						</Card>

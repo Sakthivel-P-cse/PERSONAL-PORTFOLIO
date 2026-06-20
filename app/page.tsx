@@ -1,77 +1,119 @@
-'use client';
+"use client"
 
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-
-import { HeroSection } from '@/components/home/hero-section';
-import { AboutPreview } from '@/components/home/about-preview';
-import { ProjectsPreview } from '@/components/home/projects-preview';
-import { SkillsPreview } from '@/components/home/skills-preview';
-import { ContactPreview } from '@/components/home/contact-preview';
+import { useState } from "react"
+import { MeshGradient, DotOrbit } from "@paper-design/shaders-react"
+import { Copy, Check } from "lucide-react"
 
 export default function Home() {
-	const [isLoading, setIsLoading] = useState(true);
+  const [intensity, setIntensity] = useState(1.5)
+  const [speed, setSpeed] = useState(1.0)
+  const [activeEffect, setActiveEffect] = useState("combined")
+  const [copied, setCopied] = useState(false)
 
-	useEffect(() => {
-		// Simulate loading time
-		const timer = setTimeout(() => {
-			setIsLoading(false);
-		}, 2000);
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText("pnpm i 21st.dev")
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch (err) {
+      console.error("Failed to copy text: ", err)
+    }
+  }
 
-		return () => clearTimeout(timer);
-	}, []);
+  return (
+    <div className="w-full h-screen bg-black relative overflow-hidden">
+      {activeEffect === "mesh" && (
+        <MeshGradient
+          className="w-full h-full absolute inset-0"
+          colors={["#000000", "#1a1a1a", "#333333", "#ffffff"]}
+          speed={speed}
+          backgroundColor="#000000"
+        />
+      )}
 
-	return (
-		<>
-			<AnimatePresence>
-				{isLoading && (
-					<motion.div
-						className="fixed inset-0 z-50 flex items-center justify-center bg-background"
-						initial={{ opacity: 1 }}
-						exit={{ opacity: 0 }}
-						transition={{ duration: 0.5 }}
-					>
-						<motion.div
-							className="flex flex-col items-center"
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.5 }}
-						>
-							<motion.div
-								className="w-16 h-16 border-t-4 border-primary border-solid rounded-full"
-								animate={{ rotate: 360 }}
-								transition={{
-									repeat: Infinity,
-									duration: 1,
-									ease: "linear"
-								}}
-							/>
-							<motion.p
-								className="mt-4 text-lg"
-								animate={{
-									opacity: [0.5, 1, 0.5],
-								}}
-								transition={{
-									repeat: Infinity,
-									duration: 1.5
-								}}
-							>
-								Loading...
-							</motion.p>
-						</motion.div>
-					</motion.div>
-				)}
-			</AnimatePresence>
+      {activeEffect === "dots" && (
+        <div className="w-full h-full absolute inset-0 bg-black">
+          <DotOrbit
+            className="w-full h-full"
+            dotColor="#333333"
+            orbitColor="#1a1a1a"
+            speed={speed}
+            intensity={intensity}
+          />
+        </div>
+      )}
 
-			{!isLoading && (
-				<>
-					<HeroSection />
-					<AboutPreview />
-					<ProjectsPreview />
-					<SkillsPreview />
-					<ContactPreview />
-				</>
-			)}
-		</>
-	);
+      {activeEffect === "combined" && (
+        <>
+          <MeshGradient
+            className="w-full h-full absolute inset-0"
+            colors={["#000000", "#1a1a1a", "#333333", "#ffffff"]}
+            speed={speed * 0.5}
+            wireframe={true}
+            backgroundColor="#000000"
+          />
+          <div className="w-full h-full absolute inset-0 opacity-60">
+            <DotOrbit
+              className="w-full h-full"
+              dotColor="#333333"
+              orbitColor="#1a1a1a"
+              speed={speed * 1.5}
+              intensity={intensity * 0.8}
+            />
+          </div>
+        </>
+      )}
+
+      {/* UI Overlay */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Header */}
+        <div className="absolute top-8 left-8 pointer-events-auto"></div>
+
+        {/* Effect Controls */}
+        <div className="absolute bottom-8 left-8 pointer-events-auto"></div>
+
+        {/* Parameter Controls */}
+        <div className="absolute bottom-8 right-8 pointer-events-auto space-y-4"></div>
+
+        {/* Status indicator */}
+        <div className="absolute top-8 right-8 pointer-events-auto"></div>
+      </div>
+
+      {/* Lighting overlay effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute top-1/4 left-1/3 w-32 h-32 bg-gray-800/5 rounded-full blur-3xl animate-pulse"
+          style={{ animationDuration: `${3 / speed}s` }}
+        />
+        <div
+          className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-white/2 rounded-full blur-2xl animate-pulse"
+          style={{ animationDuration: `${2 / speed}s`, animationDelay: "1s" }}
+        />
+        <div
+          className="absolute top-1/2 right-1/3 w-20 h-20 bg-gray-900/3 rounded-full blur-xl animate-pulse"
+          style={{ animationDuration: `${4 / speed}s`, animationDelay: "0.5s" }}
+        />
+      </div>
+
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="text-center font-mono text-xs text-white/40">
+          <div>...21st-cli...</div>
+          <div className="mt-1 flex items-center gap-2">
+            <span>pnpm i 21st.dev</span>
+            <button
+              onClick={copyToClipboard}
+              className="pointer-events-auto opacity-30 hover:opacity-60 transition-opacity text-white/60 hover:text-white/80"
+              title="Copy to clipboard"
+            >
+              {copied ? (
+                <Check className="w-3 h-3" />
+              ) : (
+                <Copy className="w-3 h-3" />
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 }

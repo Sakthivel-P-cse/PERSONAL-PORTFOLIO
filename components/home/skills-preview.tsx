@@ -32,7 +32,7 @@ export function SkillsPreview() {
 			<div className="container px-4">
 				<SectionHeader
 					title="Technical Skills"
-					description="Key competencies and technical expertise that I've developed throughout my engineering journey."
+					description="Key competencies and technical expertise that I've developed throughout my academic journey."
 				/>
 
 				<motion.div

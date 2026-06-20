@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Code2, Cpu, Brain, Languages } from 'lucide-react';
+import { Code2, Cpu, Brain } from 'lucide-react';
 
 import { Card, CardContent } from '@/components/ui/card';
 import { skills } from '@/lib/constants';
@@ -11,7 +11,6 @@ export default function SkillsPage() {
 	const technicalSkills = skills.filter(skill => skill.category === 'technical');
 	const softwareSkills = skills.filter(skill => skill.category === 'software');
 	const softSkills = skills.filter(skill => skill.category === 'soft');
-	const languageSkills = skills.filter(skill => skill.category === 'language');
 
 	const SkillCategory = ({
 		title,
@@ -84,18 +83,16 @@ export default function SkillsPage() {
 							icon={<Code2 className="h-6 w-6 text-secondary" />}
 							delay={0.4}
 						/>
-						<SkillCategory
-							title="Soft Skills"
-							skills={softSkills}
-							icon={<Brain className="h-6 w-6 text-accent" />}
-							delay={0.5}
-						/>
-						<SkillCategory
-							title="Languages"
-							skills={languageSkills}
-							icon={<Languages className="h-6 w-6 text-primary" />}
-							delay={0.6}
-						/>
+						<div className="md:col-span-2 flex justify-center">
+							<div className="w-full md:w-[calc(50%-1rem)]">
+								<SkillCategory
+									title="Soft Skills"
+									skills={softSkills}
+									icon={<Brain className="h-6 w-6 text-accent" />}
+									delay={0.5}
+								/>
+							</div>
+						</div>
 					</div>
 				</motion.div>
 			</div>

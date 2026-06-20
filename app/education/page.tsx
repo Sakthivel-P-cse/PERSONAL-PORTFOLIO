@@ -27,7 +27,7 @@ export default function EducationPage() {
 						variants={fadeIn('down', 0.3)}
 						className="text-lg text-muted-foreground mb-12"
 					>
-						My academic journey and achievements in the field of engineering.
+						My academic journey and achievements in Computer Science.
 					</motion.p>
 
 					<div className="space-y-8">
