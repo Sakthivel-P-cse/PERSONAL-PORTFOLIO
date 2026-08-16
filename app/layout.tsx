@@ -1,35 +1,8 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
+import "./globals.css";
 
-import { ThemeProvider } from '@/components/theme-provider';
-import { Navbar } from '@/components/layout/navbar';
-import { Footer } from '@/components/layout/footer';
-
-const inter = Inter({ subsets: ['latin'] });
-
-export const metadata: Metadata = {
-	title: 'SAKTHIVEL P Portfolio',
-	description: 'A professional portfolio website for SAKTHIVEL P.',
-};
-
-export default function RootLayout({
-	children,
-}: {
-	children: React.ReactNode;
-}) {
-	return (
-		<html lang="en" suppressHydrationWarning>
-			<link rel="shortcut icon" href="https://cdn-icons-png.freepik.com/256/12539/12539811.png" type="image/x-icon" />
-			<body className={inter.className}>
-				<ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-					<div className="relative min-h-screen flex flex-col">
-						<Navbar />
-						<main className="flex-grow pt-16">{children}</main>
-						<Footer />
-					</div>
-				</ThemeProvider>
-			</body>
-		</html>
-	);
-}
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+export const metadata: Metadata = { metadataBase: new URL(siteUrl), title: { default: "Sakthivel P — Distributed Systems & AI Infrastructure", template: "%s — Sakthivel P" }, description: "Portfolio of Sakthivel P, a Computer Science Engineering student building distributed systems, backend infrastructure, observability tooling and AI platforms.", openGraph: { title: "Sakthivel P — Distributed Systems & AI Infrastructure", description: "Distributed systems, backend engineering, observability and durable AI infrastructure.", type: "website" }, robots: { index: true, follow: true } };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#080b0a" };
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) { return <html lang="en"><body>{children}</body></html>; }
