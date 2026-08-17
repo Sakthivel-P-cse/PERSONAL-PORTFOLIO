@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/59b15b4bcd7b1eb5-s.p.afa48be3.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/99e609270109b47d-s.p.64b9304e.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/a7afbb44bec2bb18-s.p.1dcddae6.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/effe91970fc4db64-s.p.19510058.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/1a69062cfe6f77f8-s.p.b36ae37c.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/23b7a97ae3b5c134-s.p.2902b61f.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Share Tech Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/c9bd7381a27f2960-s.p.efaf60a6.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/70bc3e132a0a741e-s.p.15008bfb.woff2') format('woff2');
+  /* Keeping simplified for JetBrains */
+}
+
+@theme {
+  --color-bg: #0a0a0a;
+  --color-black: #0a0a0a;
+  --color-text-bright: #e8e8e8;
+  --color-text: #d0d0d0;
+  --color-text-dim: #888888;
+  --color-text-faint: #555555;
+  --color-text-trace: #333333;
+  --color-rule: #222222;
+  --color-rule-soft: #1a1a1a;
+  --color-crimson: #ff0033;
+  --color-cyan: #00ffd5;
+  --color-magenta: #ff00ff;
+  --color-border-crimson: #ff00334d;
+  --color-glow-crimson: #ff003380;
+  --color-glow-cyan: #00ffd580;
+  --color-glow-magenta: #ff00ff80;
+  --color-blood: #8b0000;
+  --color-toxic: #39ff14;
+  --color-white-hot: #ffffff;
+  --color-glow-toxic: #39ff1480;
+
+  --font-ibm-plex: "IBM Plex Mono", monospace;
+  --font-share-tech: "Share Tech Mono", monospace;
+  --font-jetbrains: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  html,
+  body {
+    background-color: #0a0a0a;
+    min-height: 100%;
+  }
+
+  body {
+    color: var(--color-text);
+    font-family: var(--font-ibm-plex);
+    overflow-x: hidden;
+  }
+
+  body::after {
+    content: "";
+    pointer-events: none;
+    z-index: 1;
+    background: repeating-linear-gradient(0deg, #c8c8c804 0, #0000 1px 3px);
+    position: fixed;
+    inset: 0;
+  }
+}
+
+@layer utilities {
+  .terminal-hero {
+    font-family: var(--font-jetbrains);
+    background: #0a0a0a;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    line-height: 1.1;
+    color: var(--color-text-bright);
+    text-shadow: -2px 0 #ff003380, 2px 0 #00ffd580, 0 0 10px #f0f3;
+    animation: 4s ease-in-out infinite hero-rgb-pulse;
+  }
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: 5rem;
+    }
+  }
+
+  @keyframes hero-rgb-pulse {
+    0%, 85% { text-shadow: -2px 0 #ff003380, 2px 0 #00ffd580, 0 0 10px #f0f3; }
+    88% { text-shadow: -4px 0 #ff0033b3, 4px 0 #00ffd5b3, 0 0 20px #f0f6; }
+    91% { text-shadow: 3px 1px #f0f9, -3px -1px #39ff1499, 0 0 15px #ff00334d; }
+    94% { text-shadow: -3px 2px #00ffd599, 3px -2px #f039, 0 0 25px #00ffd54d; }
+    97% { text-shadow: -2px 0 #ff003380, 2px 0 #00ffd580, 0 0 10px #f0f3; }
+  }
+
+  .hero-identity {
+    font-size: 1rem;
+    color: var(--color-text-dim);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-family: var(--font-ibm-plex);
+  }
+  @media (min-width: 768px) {
+    .hero-identity {
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.125rem;
+    }
+  }
+
+  .hero-identity-name {
+    color: var(--color-text-bright);
+    font-weight: 500;
+  }
+
+  .hero-identity-meta {
+    display: inline;
+  }
+
+  .hero-identity-sep {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .hero-identity-sep {
+      display: inline;
+      margin: 0 0.5rem;
+      color: var(--color-text-trace);
+    }
+  }
+
+  .hero-quote {
+    font-family: var(--font-share-tech);
+    color: var(--color-text-dim);
+    line-height: 1.4;
+  }
+  
+  .hero-quote--inline {
+    margin-top: 3rem;
+  }
+  
+  .site-nav {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    z-index: 50;
+    font-family: var(--font-ibm-plex);
+    font-size: 1rem;
+  }
+  .site-nav a {
+    color: var(--color-text-dim);
+    transition: color 0.3s ease;
+  }
+  .site-nav a:hover {
+    color: var(--color-cyan);
+  }
+  
+  .screen-tear {
+    text-shadow: rgba(255, 0, 51, 0.4) -4.87448px 0px 0px,
+                 rgba(0, 255, 213, 0.4) 4.87448px 0px 0px,
+                 rgba(255, 0, 255, 0.2) 0px -0.126316px 10px;
+    animation: 8s ease-in-out infinite screen-tear;
+  }
+
+  @keyframes screen-tear {
+    0%, 93% { clip-path: none; transform: none; }
+    94% { clip-path: inset(20% 0 60%); transform: translate(10px); }
+    95% { clip-path: inset(50% 0 30%); transform: translate(-15px); }
+    96% { clip-path: inset(70% 0 10%); transform: translate(5px); }
+    97% { clip-path: inset(10% 0 80%); transform: translate(-8px); }
+    98% { clip-path: none; transform: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title,
+    .screen-tear {
+      animation: none !important;
+    }
+  }
+
+  .font-jetbrains {
+    font-family: var(--font-jetbrains);
+  }
+}

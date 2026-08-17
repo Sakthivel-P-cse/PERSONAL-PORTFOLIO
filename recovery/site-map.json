@@ -1,0 +1,17 @@
+[
+  {
+    "route": "/",
+    "type": "internal",
+    "description": "Homepage"
+  },
+  {
+    "route": "/cv",
+    "type": "internal",
+    "description": "CV / Resume Page"
+  },
+  {
+    "route": "/links",
+    "type": "internal",
+    "description": "Links / Linktree alternative"
+  }
+]

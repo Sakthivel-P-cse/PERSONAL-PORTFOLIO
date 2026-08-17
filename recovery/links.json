@@ -1,0 +1,121 @@
+[
+  {
+    "label": "links",
+    "sourcePage": "/",
+    "destination": "/links",
+    "type": "internal",
+    "opensNewTab": false
+  },
+  {
+    "label": "cv",
+    "sourcePage": "/",
+    "destination": "/cv",
+    "type": "internal",
+    "opensNewTab": false
+  },
+  {
+    "label": "github",
+    "sourcePage": "/",
+    "destination": "https://github.com/aikhanjum",
+    "type": "external",
+    "opensNewTab": true
+  },
+  {
+    "label": "linkedin",
+    "sourcePage": "/",
+    "destination": "https://linkedin.com/in/aikhanjum",
+    "type": "external",
+    "opensNewTab": true
+  },
+  {
+    "label": "twitter",
+    "sourcePage": "/",
+    "destination": "https://x.com/aikhanjum",
+    "type": "external",
+    "opensNewTab": true
+  },
+  {
+    "label": "assessing the efficacy of ai models in producing personalized meal plans",
+    "sourcePage": "/cv",
+    "destination": "https://www.curieuxacademicjournal.com/_files/ugd/99711c_0af2ac13133c45d5aef4b3598fde2a2e.pdf",
+    "type": "external",
+    "opensNewTab": true
+  },
+  {
+    "label": "the quality of translation of turkic languages by ai translation tools",
+    "sourcePage": "/cv",
+    "destination": "https://www.researchgate.net/publication/394964342_The_Quality_of_Translation_of_Turkic_Languages_by_AI_Translation_Tools",
+    "type": "external",
+    "opensNewTab": true
+  },
+  {
+    "label": "my tech stack",
+    "sourcePage": "/links",
+    "destination": "https://app.notion.com/p/377e3f86338481048b3fcdc5c557c90a",
+    "type": "external",
+    "opensNewTab": true
+  },
+  {
+    "label": "playbook",
+    "sourcePage": "/links",
+    "destination": "https://app.notion.com/p/376e3f86338481ada889f6bd397ba875",
+    "type": "external",
+    "opensNewTab": true
+  },
+  {
+    "label": "list",
+    "sourcePage": "/links",
+    "destination": "https://app.notion.com/p/378e3f863384811485e0eab2449758f2",
+    "type": "external",
+    "opensNewTab": true
+  },
+  {
+    "label": "builds",
+    "sourcePage": "/links",
+    "destination": "https://app.notion.com/p/37ae3f86338481ac9fb5d7954b0f5bb7",
+    "type": "external",
+    "opensNewTab": true
+  },
+  {
+    "label": "study",
+    "sourcePage": "/links",
+    "destination": "https://app.notion.com/p/380e3f86338481b89157f4fc2dd5fc17",
+    "type": "external",
+    "opensNewTab": true
+  },
+  {
+    "label": "deadline",
+    "sourcePage": "/links",
+    "destination": "https://app.notion.com/p/381e3f86338481ae8062fa91002db977",
+    "type": "external",
+    "opensNewTab": true
+  },
+  {
+    "label": "tiktok",
+    "sourcePage": "/links",
+    "destination": "https://www.tiktok.com/@aikhanjum",
+    "type": "external",
+    "opensNewTab": true
+  },
+  {
+    "label": "instagram",
+    "sourcePage": "/links",
+    "destination": "https://www.instagram.com/aikhanjum",
+    "type": "external",
+    "opensNewTab": true
+  },
+  {
+    "label": "linkedin",
+    "sourcePage": "/links",
+    "destination": "https://www.linkedin.com/in/aikhanjum",
+    "type": "external",
+    "opensNewTab": true
+  },
+  {
+    "label": "x",
+    "sourcePage": "/links",
+    "destination": "https://x.com/aikhanjum",
+    "type": "external",
+    "opensNewTab": true
+  }
+]
