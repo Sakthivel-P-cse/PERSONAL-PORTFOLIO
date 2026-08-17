@@ -99,6 +99,10 @@
     min-height: 100%;
   }
 
+  html {
+    font-size: 14px;
+  }
+
   body {
     color: var(--color-text);
     font-family: var(--font-ibm-plex);
@@ -119,6 +123,16 @@
   .terminal-hero {
     font-family: var(--font-jetbrains);
     background: #0a0a0a;
+  }
+  .terminal-hero,
+  .terminal-hero * {
+    cursor: crosshair;
+  }
+  .terminal-hero a,
+  .terminal-hero button,
+  .terminal-hero input,
+  .terminal-hero [role="button"] {
+    cursor: pointer;
   }
   
   .hero-title {
@@ -230,6 +244,13 @@
     .screen-tear {
       animation: none !important;
     }
+  }
+
+  .name-mark {
+    color: var(--color-text-bright);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-shadow: -1px 0 #ff003380, 1px 0 #00ffd580, 0 0 8px #f0f3;
   }
 
   .font-jetbrains {

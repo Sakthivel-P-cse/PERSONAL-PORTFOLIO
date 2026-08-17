@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 interface ObfuscatedLinkProps {
-  href: string;
+  href?: string;
   label: string;
   external?: boolean;
 }
@@ -22,6 +22,10 @@ export default function ObfuscatedLink({ href, label, external = false }: Obfusc
       <span>{isHovered ? label : blockText}</span>
     </span>
   );
+
+  if (!href) {
+    return content;
+  }
 
   if (external) {
     return (
