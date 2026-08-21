@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { connectLinks, publicRepoLinks } from "@/data/portfolio";
 import ContactForm from "@/components/ContactForm";
+import PhoneCard from "@/components/PhoneCard";
 
 export const metadata = {
   title: "ssh sakthi@now — links / sakthivel p",
@@ -71,12 +72,14 @@ export default function LinksPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {connectLinks.filter(l => l.external).map(link => (
+            {connectLinks.filter(l => l.external && l.id !== "phone").map(link => (
               <a key={link.id} href={link.href} target="_blank" rel="noopener noreferrer" className="border border-rule p-4 hover:border-cyan hover:bg-rule-soft transition-colors flex justify-between items-center group">
                 <span className="text-text group-hover:text-cyan">{link.label.toLowerCase()}</span>
                 <span className="text-text-faint group-hover:text-cyan">▸</span>
               </a>
             ))}
+
+            <PhoneCard />
 
             <Link href="/cv" className="sm:col-span-2 border border-rule p-4 hover:border-cyan hover:bg-rule-soft transition-colors flex justify-between items-center group">
               <div className="flex items-center gap-2 text-text group-hover:text-cyan">
@@ -85,17 +88,6 @@ export default function LinksPage() {
               </div>
               <span className="text-text-faint group-hover:text-cyan">●</span>
             </Link>
-          </div>
-          
-          <div className="mt-8 text-xs text-text-faint space-y-2">
-            <div className="flex items-center gap-2">
-              <span className="text-cyan">●</span>
-              <span>best way to reach me</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span>·</span>
-              <span>titles mirror the git repos</span>
-            </div>
           </div>
         </section>
 

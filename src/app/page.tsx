@@ -4,11 +4,13 @@ import { motion } from "framer-motion";
 import Rot13Text from "@/components/Rot13Text";
 import ObfuscatedLink from "@/components/ObfuscatedLink";
 import GlitchText from "@/components/GlitchText";
+import HeroCursor from "@/components/HeroCursor";
 import { portfolio } from "@/data/portfolio";
 
 export default function Home() {
   return (
     <>
+      <HeroCursor />
       <section className="relative min-h-screen overflow-hidden terminal-hero flex flex-col justify-center items-center md:block">
         <div className="relative z-10 w-[90%] max-w-6xl mx-auto pt-16 pb-16 md:pt-[32vh] md:pb-32">
           <div className="space-y-5 md:space-y-4">
@@ -60,18 +62,16 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-2xl md:text-3xl lg:text-4xl font-bold mb-24 md:mb-20 text-[#d0d0d0] tracking-tight"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 leading-none text-[#d0d0d0] tracking-tight"
           >
             my goals
           </motion.h2>
           
           <div className="space-y-8 md:space-y-6">
-            <Rot13Text originalText=" " delay={0.1} />
-            <Rot13Text originalText="build scalable infrastructure" delay={0.2} />
+            <Rot13Text originalText="build scalable infrastructure" delay={0.1} />
             <Rot13Text originalText="design fault-tolerant systems" delay={0.3} />
             <Rot13Text originalText="optimize backend performance" delay={0.4} />
             <Rot13Text originalText="ship zero-trust architectures" delay={0.5} />
-            <Rot13Text originalText=" " delay={0.6} />
           </div>
         </div>
       </section>
@@ -91,9 +91,9 @@ export default function Home() {
                 <span className="text-text">{portfolio.status}</span>
               </div>
               
-              <div className="flex flex-col sm:flex-row sm:gap-8">
+              <div className="flex flex-col sm:flex-row sm:gap-8 items-start sm:items-center">
                 <span className="w-24 block sm:inline-block mb-1 sm:mb-0 text-text-faint">located</span>
-                <span className="text-text-dim">{portfolio.location}</span>
+                <ObfuscatedLink label={portfolio.location} />
               </div>
               
               <div className="flex flex-col sm:flex-row sm:gap-8 items-start sm:items-center">

@@ -26,11 +26,6 @@ export const metadata: Metadata = {
     description: portfolio.seo.description,
     images: ["/images/favicon.png"],
   },
-  icons: {
-    icon: "/images/favicon.png",
-    shortcut: "/images/favicon.png",
-    apple: "/images/favicon.png",
-  },
 };
 
 export default function RootLayout({

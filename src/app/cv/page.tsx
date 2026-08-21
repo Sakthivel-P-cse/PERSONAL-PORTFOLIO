@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { portfolio } from "@/data/portfolio";
+import GlitchText from "@/components/GlitchText";
 
 export const metadata = {
   title: "man sakthi(1) — sakthivel p",
@@ -19,7 +20,7 @@ export default function CVPage() {
         </div>
         <div className="flex justify-between text-text-dim">
           <span>:set number</span>
-          <span>2026-08-17 · SAKTHI(1)</span>
+          <span>2026-08-17 · SAKTHI</span>
         </div>
       </header>
 
@@ -30,8 +31,16 @@ export default function CVPage() {
               <span className="text-text-faint text-xs">001</span>
               <h2 className="text-xl font-bold">NAME</h2>
             </div>
-            <div className="pl-8 text-text-dim">
-              sakthi — {portfolio.headline.toLowerCase()}
+            <div className="pl-8 text-text-dim flex items-baseline gap-x-2 flex-wrap">
+              <GlitchText
+                intensity="low"
+                initialScramble
+                initialScrambleDuration={700}
+                className="name-mark screen-tear"
+              >
+                Sakthi
+              </GlitchText>
+              <span>— {portfolio.headline.toLowerCase()}</span>
             </div>
           </section>
 
@@ -52,12 +61,12 @@ export default function CVPage() {
             </div>
             <div className="pl-8 space-y-2">
               <div className="flex justify-between">
-                <span className="font-semibold text-text">{portfolio.education.institution.toLowerCase()}</span>
+                <span className="font-semibold text-text">{portfolio.education.institution}</span>
                 <span className="text-text-dim">{portfolio.education.dates.toLowerCase()}</span>
               </div>
               <div className="flex justify-between text-text-dim">
-                <span>{portfolio.education.degree.toLowerCase()}, cgpa: {portfolio.education.cgpa}</span>
-                <span>{portfolio.education.location.toLowerCase()}</span>
+                <span>{portfolio.education.degree}, cgpa: {portfolio.education.cgpa}</span>
+                <span>{portfolio.education.location}</span>
               </div>
             </div>
           </section>
@@ -72,12 +81,12 @@ export default function CVPage() {
                 <div key={i} className="group cursor-pointer">
                   <div className="flex justify-between items-center text-text hover:text-cyan transition-colors">
                     <div className="flex items-center gap-2">
-                      <span className="font-semibold">{exp.role.toLowerCase()}</span>
+                      <span className="font-semibold">{exp.role}</span>
                     </div>
                     <span className="text-text-dim">{exp.dates.toLowerCase()} [+]</span>
                   </div>
                   <div className="flex justify-between text-text-dim mt-1">
-                    <span>{exp.company.toLowerCase()}</span>
+                    <span>{exp.company}</span>
                     <span>{exp.location.toLowerCase()}</span>
                   </div>
                   <p className="text-text-dim text-xs mt-2 opacity-80">{exp.description.toLowerCase()}</p>
@@ -96,7 +105,7 @@ export default function CVPage() {
                 <div key={i}>
                   <div className="flex justify-between group">
                     <a href={project.repository} target="_blank" rel="noopener noreferrer" className="text-text hover:text-cyan transition-colors underline decoration-rule underline-offset-4">
-                      {project.name.toLowerCase()}
+                      {project.name}
                     </a>
                   </div>
                   <div className="text-text-dim mt-1">{project.description.toLowerCase()}</div>
@@ -152,16 +161,28 @@ export default function CVPage() {
               </div>
               
               <div className="grid grid-cols-[50px_1fr] gap-2">
+                <span className="text-text-faint">year</span>
+                <span className="text-text-dim">3rd year</span>
+              </div>
+
+              <div className="grid grid-cols-[50px_1fr] gap-2">
                 <span className="text-text-faint">mail</span>
                 <a href={`mailto:${portfolio.social.email}`} className="text-text hover:text-cyan transition-colors truncate">
                   {portfolio.social.email}
                 </a>
               </div>
-              
+
               <div className="grid grid-cols-[50px_1fr] gap-2">
                 <span className="text-text-faint">git</span>
                 <a href={portfolio.social.github} className="text-text hover:text-cyan transition-colors truncate">
                   @sakthivel
+                </a>
+              </div>
+
+              <div className="grid grid-cols-[50px_1fr] gap-2">
+                <span className="text-text-faint">in</span>
+                <a href={portfolio.social.linkedin} className="text-text hover:text-cyan transition-colors truncate">
+                  sakthivel-p
                 </a>
               </div>
             </div>

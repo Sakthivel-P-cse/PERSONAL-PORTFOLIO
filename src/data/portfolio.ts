@@ -8,7 +8,7 @@ export const portfolio = {
     "если знаешь, что можешь стать одной из них?",
   ],
   headline:
-    "Engineering Distributed Systems, Backend Infrastructure & AI Platforms.",
+    "seeking hard problems, weird ideas, people who ship.",
   shortTitle: "Distributed Systems • Backend Infrastructure • AI Engineering",
   professions: [
     "AI Engineer",
@@ -24,7 +24,7 @@ export const portfolio = {
   social: {
     github: "https://github.com/Sakthivel-P-cse",
     linkedin: "https://linkedin.com/in/sakthivel-p-00152a317/",
-    email: "mailto:prsakthivel51@gmail.com",
+    email: "prsakthivel51@gmail.com",
     phone: "tel:+919629627360",
   },
 
@@ -268,13 +268,13 @@ export const portfolio = {
   seo: {
     title: "Sakthivel P — Distributed Systems & Backend Engineer",
     description:
-      "Portfolio of Sakthivel P, a Computer Science Engineering student building distributed systems, backend infrastructure, observability platforms and AI engineering systems.",
+      "A Computer Science Engineering student building distributed systems, backend infrastructure, observability platforms and AI engineering systems.",
     keywords:
       "sakthivel,distributed systems,backend infrastructure,observability,AI engineering,go,kubernetes,raft",
     author: "Sakthivel P",
   },
 
-  status: "Engineering Distributed Systems, Backend Infrastructure & AI Platforms.",
+  status: "seeking hard problems, weird ideas, people who ship.",
 };
 
 export type Project = (typeof portfolio.projects)[number];
@@ -287,7 +287,7 @@ export const moreProjects = portfolio.projects.filter((p) => !p.featured);
 export const connectLinks = [
   { id: "github", label: "GitHub", href: portfolio.social.github, external: true },
   { id: "linkedin", label: "LinkedIn", href: portfolio.social.linkedin, external: true },
-  { id: "email", label: "Email", href: portfolio.social.email, external: true },
+  { id: "email", label: "Email", href: `mailto:${portfolio.social.email}`, external: true },
   { id: "phone", label: "Phone", href: portfolio.social.phone, external: true },
   { id: "cv", label: "CV", href: "/cv", external: false },
 ];
