@@ -91,10 +91,6 @@ export default function LinksPage() {
           
           <div className="mt-8 text-xs text-text-faint space-y-2">
             <div className="flex items-center gap-2">
-              <span className="text-cyan">●</span>
-              <span>best way to reach me</span>
-            </div>
-            <div className="flex items-center gap-2">
               <span>·</span>
               <span>titles mirror the git repos</span>
             </div>
