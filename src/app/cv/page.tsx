@@ -1,11 +1,107 @@
 import Link from "next/link";
 import { portfolio } from "@/data/portfolio";
-import { advancedTechStack } from "@/data/cv";
+import { advancedTechStack, type AdvancedTechStackVisual } from "@/data/cv";
 import GlitchText from "@/components/GlitchText";
 
 export const metadata = {
   title: "man sakthi(1) — sakthivel p",
 };
+
+function TechStackGlyph({ visual }: { visual: AdvancedTechStackVisual }) {
+  const common = {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    strokeWidth: 1.4,
+  };
+
+  return (
+    <svg viewBox="0 0 52 32" className="h-8 w-[52px]" aria-hidden="true">
+      <path d="M1 30.5H51" className="text-text-trace" stroke="currentColor" strokeWidth="0.5" />
+      {visual === "consensus" && (
+        <>
+          <path d="M8 16h36M15 9l-7 7 7 7M37 9l7 7-7 7" {...common} />
+          <circle cx="15" cy="16" r="3" {...common} />
+          <circle cx="26" cy="16" r="3" {...common} />
+          <circle cx="37" cy="16" r="3" {...common} />
+        </>
+      )}
+      {visual === "workflow" && (
+        <>
+          <path d="M8 8h9v8h9v8h9v-8h9" {...common} />
+          <path d="m40 13 4 3-4 3" {...common} />
+          <circle cx="8" cy="8" r="2" {...common} />
+          <circle cx="26" cy="24" r="2" {...common} />
+        </>
+      )}
+      {visual === "observability" && (
+        <>
+          <path d="M6 24V18M14 24V11M22 24V15M30 24V7M38 24V13M46 24V5" {...common} />
+          <path d="M5 27h42" {...common} />
+          <path d="m6 8 8 4 8-3 8 5 8-9 8 3" {...common} />
+        </>
+      )}
+      {visual === "security" && (
+        <>
+          <path d="M26 5 42 11v8c0 7-6 10-16 13C16 29 10 26 10 19v-8L26 5Z" {...common} />
+          <path d="m18 19 5 5 11-12" {...common} />
+        </>
+      )}
+      {visual === "storage" && (
+        <>
+          <ellipse cx="26" cy="8" rx="15" ry="4" {...common} />
+          <path d="M11 8v8c0 2 7 4 15 4s15-2 15-4V8M11 16v8c0 2 7 4 15 4s15-2 15-4v-8" {...common} />
+        </>
+      )}
+      {visual === "sandbox" && (
+        <>
+          <rect x="13" y="7" width="26" height="19" rx="2" {...common} />
+          <path d="M19 12h14M19 17h14M19 22h8M8 12v-4h4M44 12v-4h-4M8 20v4h4M44 20v4h-4" {...common} />
+        </>
+      )}
+      {visual === "network" && (
+        <>
+          <path d="M12 16h28M26 7v18M12 16l14-9 14 9-14 9-14-9Z" {...common} />
+          <circle cx="12" cy="16" r="3" {...common} />
+          <circle cx="26" cy="7" r="3" {...common} />
+          <circle cx="40" cy="16" r="3" {...common} />
+          <circle cx="26" cy="25" r="3" {...common} />
+        </>
+      )}
+      {visual === "retrieval" && (
+        <>
+          <circle cx="24" cy="15" r="9" {...common} />
+          <path d="m31 22 8 6M20 15h8M24 11v8" {...common} />
+          <circle cx="24" cy="15" r="2" {...common} />
+          <path d="M10 8h-4v4M42 8h4v4M10 24H6v-4M42 24h4v-4" {...common} />
+        </>
+      )}
+      {visual === "cloud" && (
+        <>
+          <path d="M16 24h22a7 7 0 0 0 1-14 10 10 0 0 0-19-2 8 8 0 0 0-4 16Z" {...common} />
+          <path d="M21 25v4M27 25v4M33 25v4" {...common} />
+        </>
+      )}
+      {visual === "resilience" && (
+        <>
+          <path d="M8 19a18 18 0 0 1 31-10" {...common} />
+          <path d="m35 5 5 4-6 2M44 13a18 18 0 0 1-31 10" {...common} />
+          <path d="m17 27-5-4 6-2" {...common} />
+          <path d="M26 11v10M21 16h10" {...common} />
+        </>
+      )}
+      {visual === "delivery" && (
+        <>
+          <path d="M8 16h28" {...common} />
+          <path d="m31 9 7 7-7 7" {...common} />
+          <path d="M8 10v12M15 10v12M22 10v12" {...common} />
+          <circle cx="8" cy="16" r="2" {...common} />
+        </>
+      )}
+    </svg>
+  );
+}
 
 export default function CVPage() {
   return (
@@ -64,20 +160,20 @@ export default function CVPage() {
               {advancedTechStack.map((card, index) => (
                 <article
                   key={card.title}
-                  className="group relative overflow-hidden border border-rule bg-rule-soft p-4 transition-colors hover:border-cyan"
+                  className="stack-card group relative overflow-hidden border border-rule bg-rule-soft p-4 transition-all duration-300 hover:-translate-y-1 hover:border-cyan hover:shadow-[0_0_24px_rgba(0,255,213,0.08)]"
                 >
-                  <div className="mb-6 flex items-start justify-between">
-                    <span className="font-jetbrains text-lg text-text group-hover:text-cyan transition-colors">
-                      {card.icon}
-                    </span>
+                  <div className="relative z-10 mb-6 flex items-start justify-between">
+                    <div className="stack-card-glyph text-text-dim transition-colors duration-300 group-hover:text-cyan">
+                      <TechStackGlyph visual={card.visual} />
+                    </div>
                     <span className="text-[9px] tracking-[0.2em] text-text-faint">
                       /{String(index + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <h3 className="text-base text-text group-hover:text-cyan transition-colors">
+                  <h3 className="relative z-10 text-base text-text transition-colors duration-300 group-hover:text-cyan">
                     {card.title}
                   </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-text-dim">
+                  <p className="relative z-10 mt-2 text-xs leading-relaxed text-text-dim">
                     {card.concepts}
                   </p>
                 </article>

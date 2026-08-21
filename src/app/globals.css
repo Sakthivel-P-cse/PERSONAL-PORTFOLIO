@@ -256,4 +256,57 @@
   .font-jetbrains {
     font-family: var(--font-jetbrains);
   }
+
+  .stack-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(110deg, transparent 20%, rgba(0, 255, 213, 0.08) 48%, transparent 72%);
+    transform: translateX(-110%);
+    transition: opacity 0.3s ease, transform 0.65s ease;
+  }
+
+  .stack-card::after {
+    content: "";
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    pointer-events: none;
+    opacity: 0;
+    border-top: 1px solid var(--color-cyan);
+    border-right: 1px solid var(--color-cyan);
+    box-shadow: 0 0 12px var(--color-glow-cyan);
+    transition: opacity 0.3s ease;
+  }
+
+  .stack-card:hover::before {
+    opacity: 1;
+    transform: translateX(110%);
+  }
+
+  .stack-card:hover::after {
+    opacity: 0.55;
+  }
+
+  .stack-card-glyph {
+    filter: drop-shadow(0 0 0 transparent);
+    transition: filter 0.3s ease;
+  }
+
+  .stack-card:hover .stack-card-glyph {
+    filter: drop-shadow(0 0 7px var(--color-glow-cyan));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stack-card,
+    .stack-card::before,
+    .stack-card::after,
+    .stack-card-glyph {
+      transition: none !important;
+    }
+  }
 }
