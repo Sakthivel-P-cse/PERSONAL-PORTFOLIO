@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { connectLinks, publicRepoLinks } from "@/data/portfolio";
 import ContactForm from "@/components/ContactForm";
+import EmailCard from "@/components/EmailCard";
 import PhoneCard from "@/components/PhoneCard";
 
 export const metadata = {
@@ -72,13 +73,14 @@ export default function LinksPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {connectLinks.filter(l => l.external && l.id !== "phone").map(link => (
+            {connectLinks.filter(l => l.external && l.id !== "email" && l.id !== "phone").map(link => (
               <a key={link.id} href={link.href} target="_blank" rel="noopener noreferrer" className="border border-rule p-4 hover:border-cyan hover:bg-rule-soft transition-colors flex justify-between items-center group">
                 <span className="text-text group-hover:text-cyan">{link.label.toLowerCase()}</span>
                 <span className="text-text-faint group-hover:text-cyan">▸</span>
               </a>
             ))}
 
+            <EmailCard />
             <PhoneCard />
 
             <Link href="/cv" className="sm:col-span-2 border border-rule p-4 hover:border-cyan hover:bg-rule-soft transition-colors flex justify-between items-center group">
