@@ -88,13 +88,6 @@ export default function LinksPage() {
               <span className="text-text-faint group-hover:text-cyan">●</span>
             </Link>
           </div>
-          
-          <div className="mt-8 text-xs text-text-faint space-y-2">
-            <div className="flex items-center gap-2">
-              <span>·</span>
-              <span>titles mirror the git repos</span>
-            </div>
-          </div>
         </section>
 
         <div className="pt-8 pb-4">
