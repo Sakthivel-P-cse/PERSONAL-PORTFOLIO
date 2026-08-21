@@ -41,10 +41,10 @@ export default function GlitchText({
   initialScrambleDuration = 500,
 }: GlitchTextProps) {
   const settings = INTENSITY[intensity];
-  const [display, setDisplay] = useState(
-    initialScramble ? scramble(children, settings.chars) : children
-  );
-  const [glitching, setGlitching] = useState(initialScramble);
+  // Keep the first render identical on the server and client. The scramble
+  // begins in an effect so Math.random() never affects hydration.
+  const [display, setDisplay] = useState(children);
+  const [glitching, setGlitching] = useState(false);
   const untilRef = useRef(0);
   const reduceMotion = useRef(false);
 

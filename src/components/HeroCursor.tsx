@@ -61,7 +61,7 @@ export default function HeroCursor() {
       }}
       animate={{
         scale: hovering ? 1.5 : 1,
-        backgroundColor: hovering ? "rgba(255, 0, 51, 0.1)" : "transparent",
+        backgroundColor: hovering ? "rgba(255, 0, 51, 0.1)" : "rgba(0, 0, 0, 0)",
         borderColor: hovering ? "var(--color-cyan)" : "var(--color-crimson)",
       }}
       transition={{ type: "spring", damping: 30, stiffness: 400, mass: 0.5 }}
