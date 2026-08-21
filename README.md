@@ -18,6 +18,12 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+## Contact form
+
+The `/links` page includes a server-side contact form backed by Resend. Copy
+`.env.example` to `.env.local`, add a Resend API key, and set
+`RESEND_FROM_EMAIL` to a verified sender before using it in production.
+
 ## Updating Content
 
 Edit `src/data/portfolio.ts` to update most portfolio information in one place.

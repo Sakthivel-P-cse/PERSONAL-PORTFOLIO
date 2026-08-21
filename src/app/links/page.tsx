@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { connectLinks, publicRepoLinks } from "@/data/portfolio";
+import ContactForm from "@/components/ContactForm";
 
 export const metadata = {
   title: "ssh sakthi@now — links / sakthivel p",
@@ -95,6 +96,22 @@ export default function LinksPage() {
               <span>·</span>
               <span>titles mirror the git repos</span>
             </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="contact-heading">
+          <div className="mb-6 space-y-1">
+            <div className="text-text-dim">sakthi@now:~$</div>
+            <h2 id="contact-heading" className="text-text">
+              ./contact --send
+            </h2>
+            <div className="pt-1 text-text-faint">
+              send a message · replies go straight to my inbox
+            </div>
+          </div>
+
+          <div className="border border-rule bg-rule-soft p-5 md:p-6">
+            <ContactForm />
           </div>
         </section>
 
