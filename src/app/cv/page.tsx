@@ -151,39 +151,9 @@ export default function CVPage() {
             </p>
           </section>
 
-          <section id="stack" className="space-y-6">
-            <div className="flex items-baseline gap-4">
-              <span className="text-text-faint text-xs">003</span>
-              <h2 className="text-xl font-bold">TECH STACK</h2>
-            </div>
-            <div className="pl-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {advancedTechStack.map((card, index) => (
-                <article
-                  key={card.title}
-                  className="stack-card group relative overflow-hidden border border-rule bg-rule-soft p-4 transition-all duration-300 hover:-translate-y-1 hover:border-cyan hover:shadow-[0_0_24px_rgba(0,255,213,0.08)]"
-                >
-                  <div className="relative z-10 mb-6 flex items-start justify-between">
-                    <div className="stack-card-glyph text-text-dim transition-colors duration-300 group-hover:text-cyan">
-                      <TechStackGlyph visual={card.visual} />
-                    </div>
-                    <span className="text-[9px] tracking-[0.2em] text-text-faint">
-                      /{String(index + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <h3 className="relative z-10 text-base text-text transition-colors duration-300 group-hover:text-cyan">
-                    {card.title}
-                  </h3>
-                  <p className="relative z-10 mt-2 text-xs leading-relaxed text-text-dim">
-                    {card.concepts}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </section>
-
           <section id="education" className="space-y-4">
             <div className="flex items-baseline gap-4">
-              <span className="text-text-faint text-xs">004</span>
+              <span className="text-text-faint text-xs">003</span>
               <h2 className="text-xl font-bold">EDUCATION</h2>
             </div>
             <div className="pl-8 space-y-2">
@@ -200,7 +170,7 @@ export default function CVPage() {
 
           <section id="experience" className="space-y-6">
             <div className="flex items-baseline gap-4">
-              <span className="text-text-faint text-xs">005</span>
+              <span className="text-text-faint text-xs">004</span>
               <h2 className="text-xl font-bold">EXPERIENCE</h2>
             </div>
             <div className="pl-8 space-y-6">
@@ -224,7 +194,7 @@ export default function CVPage() {
 
           <section id="projects" className="space-y-4">
             <div className="flex items-baseline gap-4">
-              <span className="text-text-faint text-xs">006</span>
+              <span className="text-text-faint text-xs">005</span>
               <h2 className="text-xl font-bold">PROJECTS</h2>
             </div>
             <div className="pl-8 space-y-6">
@@ -242,6 +212,36 @@ export default function CVPage() {
                     ))}
                   </div>
                 </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="stack" className="space-y-6">
+            <div className="flex items-baseline gap-4">
+              <span className="text-text-faint text-xs">006</span>
+              <h2 className="text-xl font-bold">TECH STACK</h2>
+            </div>
+            <div className="pl-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {advancedTechStack.map((card, index) => (
+                <article
+                  key={card.title}
+                  className="stack-card group relative overflow-hidden border border-rule bg-rule-soft p-4 transition-all duration-300 hover:-translate-y-1 hover:border-cyan hover:shadow-[0_0_24px_rgba(0,255,213,0.08)]"
+                >
+                  <div className="relative z-10 mb-6 flex items-start justify-between">
+                    <div className="stack-card-glyph text-text-dim transition-colors duration-300 group-hover:text-cyan">
+                      <TechStackGlyph visual={card.visual} />
+                    </div>
+                    <span className="text-[9px] tracking-[0.2em] text-text-faint">
+                      /{String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <h3 className="relative z-10 text-base text-text transition-colors duration-300 group-hover:text-cyan">
+                    {card.title}
+                  </h3>
+                  <p className="relative z-10 mt-2 text-xs leading-relaxed text-text-dim">
+                    {card.concepts}
+                  </p>
+                </article>
               ))}
             </div>
           </section>
@@ -273,10 +273,10 @@ export default function CVPage() {
               <div className="text-text-faint mb-4 uppercase text-xs tracking-wider">table of contents</div>
               <a href="#name" className="block text-text hover:text-cyan transition-colors">001 NAME</a>
               <a href="#description" className="block text-text-dim hover:text-cyan transition-colors">002 DESCRIPTION</a>
-              <a href="#stack" className="block text-text-dim hover:text-cyan transition-colors">003 TECH STACK</a>
-              <a href="#education" className="block text-text-dim hover:text-cyan transition-colors">004 EDUCATION</a>
-              <a href="#experience" className="block text-text-dim hover:text-cyan transition-colors">005 EXPERIENCE</a>
-              <a href="#projects" className="block text-text-dim hover:text-cyan transition-colors">006 PROJECTS</a>
+              <a href="#education" className="block text-text-dim hover:text-cyan transition-colors">003 EDUCATION</a>
+              <a href="#experience" className="block text-text-dim hover:text-cyan transition-colors">004 EXPERIENCE</a>
+              <a href="#projects" className="block text-text-dim hover:text-cyan transition-colors">005 PROJECTS</a>
+              <a href="#stack" className="block text-text-dim hover:text-cyan transition-colors">006 TECH STACK</a>
               <a href="#see-also" className="block text-text-dim hover:text-cyan transition-colors">007 SEE ALSO</a>
             </nav>
             
