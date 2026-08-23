@@ -246,24 +246,6 @@ export default function CVPage() {
             </div>
           </section>
 
-          <section id="see-also" className="space-y-4">
-            <div className="flex items-baseline gap-4">
-              <span className="text-text-faint text-xs">007</span>
-              <h2 className="text-xl font-bold">SEE ALSO</h2>
-            </div>
-            <div className="pl-8 flex flex-wrap gap-4 text-text-dim">
-              <Link href="/links" className="hover:text-cyan transition-colors">links</Link>
-              <a href={`mailto:${portfolio.social.email}`} className="hover:text-cyan transition-colors">{portfolio.social.email}</a>
-              <a href={portfolio.social.github} className="hover:text-cyan transition-colors">github</a>
-              <a href={portfolio.social.linkedin} className="hover:text-cyan transition-colors">linkedin</a>
-            </div>
-            <div className="pl-8 pt-4">
-              <Link href="/" className="text-text hover:text-cyan transition-colors">
-                ← back to /
-              </Link>
-            </div>
-          </section>
-          
           <div className="text-center text-text-faint pt-8">(END)</div>
         </div>
 
@@ -277,7 +259,6 @@ export default function CVPage() {
               <a href="#experience" className="block text-text-dim hover:text-cyan transition-colors">004 EXPERIENCE</a>
               <a href="#projects" className="block text-text-dim hover:text-cyan transition-colors">005 PROJECTS</a>
               <a href="#stack" className="block text-text-dim hover:text-cyan transition-colors">006 TECH STACK</a>
-              <a href="#see-also" className="block text-text-dim hover:text-cyan transition-colors">007 SEE ALSO</a>
             </nav>
             
             <div className="space-y-4 text-xs font-mono bg-rule-soft p-4 rounded border border-rule">
