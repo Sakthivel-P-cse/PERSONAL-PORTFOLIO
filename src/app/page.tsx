@@ -5,11 +5,13 @@ import Rot13Text from "@/components/Rot13Text";
 import ObfuscatedLink from "@/components/ObfuscatedLink";
 import GlitchText from "@/components/GlitchText";
 import HeroCursor from "@/components/HeroCursor";
+import BootSequence from "@/components/BootSequence";
 import { portfolio } from "@/data/portfolio";
 
 export default function Home() {
   return (
     <>
+      <BootSequence />
       <HeroCursor />
       <section className="relative min-h-screen overflow-hidden terminal-hero flex flex-col justify-center items-center md:block">
         <div className="relative z-10 w-[90%] max-w-6xl mx-auto pt-16 pb-16 md:pt-[32vh] md:pb-32">
@@ -98,7 +100,12 @@ export default function Home() {
               
               <div className="flex flex-col sm:flex-row sm:gap-8 items-start sm:items-center">
                 <span className="w-24 block sm:inline-block mb-1 sm:mb-0 text-text-faint">contact</span>
-                <ObfuscatedLink href={`mailto:${portfolio.social.email}`} label={portfolio.social.email} external />
+                <ObfuscatedLink
+                  href={`mailto:${portfolio.social.email}`}
+                  label={portfolio.social.email}
+                  external
+                  copyOnClick
+                />
               </div>
               
               <div className="flex flex-col sm:flex-row sm:gap-8 items-start sm:items-center">

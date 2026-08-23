@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { portfolio } from "@/data/portfolio";
 
 interface BootSequenceProps {
-  onComplete: () => void;
+  onComplete?: () => void;
 }
 
 export default function BootSequence({ onComplete }: BootSequenceProps) {
@@ -14,7 +14,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
 
   const complete = useCallback(() => {
     setHidden(true);
-    onComplete();
+    onComplete?.();
   }, [onComplete]);
 
   const skip = useCallback(() => {
@@ -33,8 +33,8 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
     }
 
     const totalLines = portfolio.bootSequence.length;
-    const lineInterval = 250;
-    const totalDuration = 2200;
+    const lineInterval = 190;
+    const totalDuration = 1900;
 
     const lineTimer = setInterval(() => {
       setVisibleLines((prev) => {
@@ -69,16 +69,16 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
 
   return (
     <div
-      className="fixed inset-0 z-[100] bg-bg flex flex-col items-center justify-center font-jetbrains"
+      className="boot-sequence"
       role="dialog"
       aria-label="Boot sequence"
       aria-live="polite"
     >
-      <div className="w-[90%] max-w-2xl space-y-2 text-sm md:text-base">
+      <div className="boot-sequence__lines">
         {portfolio.bootSequence.map((line, i) => (
           <div
             key={line}
-            className={`text-text-dim transition-opacity duration-200 ${
+            className={`boot-sequence__line ${
               skipped || i < visibleLines ? "opacity-100" : "opacity-0"
             }`}
           >
@@ -86,12 +86,15 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
           </div>
         ))}
         {!skipped && visibleLines >= portfolio.bootSequence.length && (
-          <div className="text-cyan animate-pulse">█</div>
+          <div className="boot-sequence__cursor" aria-hidden="true">
+            █
+          </div>
         )}
       </div>
       <button
         onClick={skip}
-        className="absolute bottom-8 right-8 text-text-faint hover:text-cyan transition-colors text-sm font-ibm-plex focus:outline-none focus:text-cyan"
+        className="boot-sequence__skip"
+        type="button"
         aria-label="Skip boot sequence"
       >
         skip [esc]

@@ -251,13 +251,12 @@ export const portfolio = {
   },
 
   bootSequence: [
-    "> initializing sakthivel.portfolio",
-    "> loading distributed-systems...",
-    "> loading backend-infrastructure...",
-    "> loading observability...",
-    "> loading ai-infrastructure...",
-    "> connecting projects...",
-    "> system ready.",
+    "[SYSTEM] initializing...",
+    "[SECURITY] patching vulnerabilities...",
+    "[GOVERNMENT] resisting entropy of ideals...",
+    "[MIDDLEWARE] determinism patched with hope.",
+    "[ETHICS] narcissism disguised as righteousness?",
+    "[STATUS] ready.",
   ],
 
   cv: {
