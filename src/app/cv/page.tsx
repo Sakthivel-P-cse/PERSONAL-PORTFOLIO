@@ -246,6 +246,12 @@ export default function CVPage() {
             </div>
           </section>
 
+          <div className="pt-8 pb-4">
+            <Link href="/" className="text-text hover:text-cyan transition-colors">
+              ← back to /
+            </Link>
+          </div>
+
           <div className="text-center text-text-faint pt-8">(END)</div>
         </div>
 
