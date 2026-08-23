@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { portfolio } from "@/data/portfolio";
 
 export const runtime = "nodejs";
 
@@ -26,21 +25,6 @@ function textField(value: unknown, maxLength: number) {
     : null;
 }
 
-function escapeHtml(value: string) {
-  const entities: Record<string, string> = {
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;",
-  };
-
-  return value.replace(
-    /[&<>\"']/g,
-    (character) => entities[character] ?? character
-  );
-}
-
 function requestIp(request: Request) {
   return (
     request.headers.get("x-real-ip") ??
@@ -62,6 +46,27 @@ function isRateLimited(ip: string) {
 
   current.count += 1;
   return false;
+}
+
+function formspreeEndpoint(value: string | undefined) {
+  if (!value) return null;
+
+  try {
+    const endpoint = new URL(value);
+    if (
+      endpoint.protocol !== "https:" ||
+      endpoint.hostname !== "formspree.io" ||
+      !/^\/f\/[A-Za-z0-9_-]+$/.test(endpoint.pathname) ||
+      endpoint.search ||
+      endpoint.hash
+    ) {
+      return null;
+    }
+
+    return endpoint.toString();
+  } catch {
+    return null;
+  }
 }
 
 function jsonError(message: string, status: number, headers?: HeadersInit) {
@@ -121,36 +126,27 @@ export async function POST(request: Request) {
     return jsonError("Please enter a valid email address.", 400);
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.RESEND_FROM_EMAIL;
-  const recipient = process.env.CONTACT_EMAIL ?? portfolio.email;
+  const endpoint = formspreeEndpoint(process.env.FORMSPREE_ENDPOINT);
 
-  if (!apiKey || !from) {
+  if (!endpoint) {
     return jsonError(
-      "The contact service is not configured yet. Please use the email link instead.",
+      "The contact service is not configured yet. Please create a Formspree form and set FORMSPREE_ENDPOINT.",
       503
     );
   }
 
-  const escapedName = escapeHtml(name);
-  const escapedEmail = escapeHtml(email);
-  const escapedSubject = escapeHtml(subject);
-  const escapedMessage = escapeHtml(message).replace(/\n/g, "<br />");
-
   try {
-    const response = await fetch("https://api.resend.com/emails", {
+    const response = await fetch(endpoint, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${apiKey}`,
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from,
-        to: [recipient],
-        reply_to: email,
-        subject: `[Portfolio] ${subject}`,
-        html: `<p><strong>From:</strong> ${escapedName} (${escapedEmail})</p><p><strong>Subject:</strong> ${escapedSubject}</p><p>${escapedMessage}</p>`,
-        text: `From: ${name} (${email})\nSubject: ${subject}\n\n${message}`,
+        name,
+        email,
+        subject,
+        message,
       }),
     });
 

@@ -20,9 +20,10 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Contact form
 
-The `/links` page includes a server-side contact form backed by Resend. Copy
-`.env.example` to `.env.local`, add a Resend API key, and set
-`RESEND_FROM_EMAIL` to a verified sender before using it in production.
+The `/links` page includes a server-side contact form backed by Formspree.
+Create a form at [formspree.io](https://formspree.io/), copy its endpoint into
+`FORMSPREE_ENDPOINT`, and add that variable to `.env.local` and the Vercel
+Production environment before deploying.
 
 ## Updating Content
 
