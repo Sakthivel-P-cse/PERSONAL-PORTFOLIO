@@ -33,8 +33,8 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
     }
 
     const totalLines = portfolio.bootSequence.length;
-    const lineInterval = 190;
-    const totalDuration = 1900;
+    const lineInterval = 700;
+    const totalDuration = 5000;
 
     const lineTimer = setInterval(() => {
       setVisibleLines((prev) => {
