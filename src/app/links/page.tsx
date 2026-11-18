@@ -35,6 +35,18 @@ export default function LinksPage() {
           </div>
 
           <div className="space-y-4">
+            <a
+              href="/resume.pdf"
+              download="Resume.pdf"
+              aria-label="Download resume PDF"
+              className="group block border border-rule hover:border-cyan bg-bg hover:bg-rule-soft transition-colors p-4 relative overflow-hidden"
+            >
+              <div className="flex items-start gap-4">
+                <div aria-hidden="true" className="text-text-faint group-hover:text-cyan transition-colors font-mono mt-1 w-6 text-center">↓</div>
+                <div className="flex-1 font-semibold text-text group-hover:text-cyan transition-colors">Download Resume</div>
+                <div aria-hidden="true" className="text-text-faint group-hover:text-cyan transition-colors text-xs self-center">download ↓</div>
+              </div>
+            </a>
             {publicRepoLinks.map((res, i) => (
               <a 
                 key={res.id}
@@ -122,7 +134,7 @@ export default function LinksPage() {
         </div>
         <div className="hidden sm:block">-- CONNECTED --</div>
         <div>
-          {connectLinks.length + publicRepoLinks.length} drops · 100%
+          {connectLinks.length + publicRepoLinks.length + 1} drops · 100%
         </div>
       </footer>
     </div>
