@@ -141,7 +141,7 @@ export const portfolio = {
         "root-cause analysis",
       ],
       repository: "https://github.com/Sakthivel-P-cse/CAUSA",
-      visibility: "private" as const,
+      visibility: "public" as const,
       featured: true,
     },
     {
