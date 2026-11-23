@@ -85,6 +85,11 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
             {line}
           </div>
         ))}
+        <svg aria-hidden="true" width="24" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="4" cy="12" r="3" className="motion-safe:animate-pulse" />
+          <circle cx="12" cy="12" r="3" className="motion-safe:animate-pulse [animation-delay:150ms]" />
+          <circle cx="20" cy="12" r="3" className="motion-safe:animate-pulse [animation-delay:300ms]" />
+        </svg>
         {!skipped && visibleLines >= portfolio.bootSequence.length && (
           <div className="boot-sequence__cursor" aria-hidden="true">
             █

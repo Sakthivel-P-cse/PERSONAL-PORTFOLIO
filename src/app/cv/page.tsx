@@ -36,11 +36,9 @@ function TechStackGlyph({ visual }: { visual: AdvancedTechStackVisual }) {
         </>
       )}
       {visual === "observability" && (
-        <>
-          <path d="M6 24V18M14 24V11M22 24V15M30 24V7M38 24V13M46 24V5" {...common} />
-          <path d="M5 27h42" {...common} />
-          <path d="m6 8 8 4 8-3 8 5 8-9 8 3" {...common} />
-        </>
+        <svg x="14" y="4" width="24" height="24" viewBox="0 0 24 24" {...common}>
+          <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />
+        </svg>
       )}
       {visual === "security" && (
         <>
@@ -61,13 +59,10 @@ function TechStackGlyph({ visual }: { visual: AdvancedTechStackVisual }) {
         </>
       )}
       {visual === "network" && (
-        <>
-          <path d="M12 16h28M26 7v18M12 16l14-9 14 9-14 9-14-9Z" {...common} />
-          <circle cx="12" cy="16" r="3" {...common} />
-          <circle cx="26" cy="7" r="3" {...common} />
-          <circle cx="40" cy="16" r="3" {...common} />
-          <circle cx="26" cy="25" r="3" {...common} />
-        </>
+        <svg x="14" y="4" width="24" height="24" viewBox="0 0 24 24" {...common}>
+          <rect x="16" y="16" width="6" height="6" rx="1" /><rect x="2" y="16" width="6" height="6" rx="1" /><rect x="9" y="2" width="6" height="6" rx="1" />
+          <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3M12 12V8" />
+        </svg>
       )}
       {visual === "retrieval" && (
         <>
@@ -92,12 +87,9 @@ function TechStackGlyph({ visual }: { visual: AdvancedTechStackVisual }) {
         </>
       )}
       {visual === "delivery" && (
-        <>
-          <path d="M8 16h28" {...common} />
-          <path d="m31 9 7 7-7 7" {...common} />
-          <path d="M8 10v12M15 10v12M22 10v12" {...common} />
-          <circle cx="8" cy="16" r="2" {...common} />
-        </>
+        <svg x="14" y="4" width="24" height="24" viewBox="0 0 24 24" {...common}>
+          <path d="M8 9l3 3-3 3M13 15h3M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6" />
+        </svg>
       )}
     </svg>
   );
