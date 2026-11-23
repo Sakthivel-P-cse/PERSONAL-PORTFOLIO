@@ -25,6 +25,14 @@ Create a form at [formspree.io](https://formspree.io/), copy its endpoint into
 `FORMSPREE_ENDPOINT`, and add that variable to `.env.local` and the Vercel
 Production environment before deploying.
 
+## Security
+
+The app sends security headers, disables production browser source maps, validates
+and bounds contact requests, checks same-origin requests, applies a process-local
+rate limit, and keeps the Formspree endpoint server-side. Enable the hosting
+provider's WAF/bot protection and rate limiting for stronger multi-instance DDoS
+resistance; no browser site can hide content that it sends to a visitor.
+
 ## Updating Content
 
 Edit `src/data/portfolio.ts` to update most portfolio information in one place.
