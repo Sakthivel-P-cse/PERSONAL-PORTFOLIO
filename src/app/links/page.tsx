@@ -4,6 +4,7 @@ import ContactForm from "@/components/ContactForm";
 import EmailCard from "@/components/EmailCard";
 import PhoneCard from "@/components/PhoneCard";
 import LinkIcon from "@/components/links/LinkIcon";
+import AnimatedCard from "@/components/links/AnimatedCard";
 
 export const metadata = {
   title: "ssh sakthi@now — links / sakthivel p",
@@ -36,7 +37,7 @@ export default function LinksPage() {
           </div>
 
           <div className="space-y-4">
-            <a
+            <AnimatedCard index={0}><a
               href="/resume.pdf"
               download="Resume.pdf"
               aria-label="Download resume PDF"
@@ -47,10 +48,10 @@ export default function LinksPage() {
                 <div className="flex-1 font-semibold text-text group-hover:text-cyan transition-colors">Download Resume</div>
                 <div aria-hidden="true" className="text-text-faint group-hover:text-cyan transition-colors text-xs self-center">download ↓</div>
               </div>
-            </a>
-            {publicRepoLinks.map((res) => (
+            </a></AnimatedCard>
+            {publicRepoLinks.map((res, index) => (
+              <AnimatedCard key={res.id} index={index + 1}>
               <a 
-                key={res.id}
                 href={res.href}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -73,6 +74,7 @@ export default function LinksPage() {
                   </div>
                 </div>
               </a>
+              </AnimatedCard>
             ))}
           </div>
         </section>
@@ -84,23 +86,23 @@ export default function LinksPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {connectLinks.filter(l => l.external && l.id !== "email" && l.id !== "phone").map(link => (
-              <a key={link.id} href={link.href} target="_blank" rel="noopener noreferrer" className="border border-rule p-4 hover:border-cyan hover:bg-rule-soft transition-colors flex justify-between items-center group">
+            {connectLinks.filter(l => l.external && l.id !== "email" && l.id !== "phone").map((link, index) => (
+              <AnimatedCard key={link.id} index={index}><a href={link.href} target="_blank" rel="noopener noreferrer" className="border border-rule p-4 hover:border-cyan hover:bg-rule-soft transition-colors flex justify-between items-center group">
                 <span className="flex items-center gap-3 text-text group-hover:text-cyan"><LinkIcon name={link.id === "linkedin" ? "linkedin" : "github"} />{link.label.toLowerCase()}</span>
                 <span className="text-text-faint group-hover:text-cyan">▸</span>
-              </a>
+              </a></AnimatedCard>
             ))}
 
-            <div className="relative [&>div>button]:pl-12"><span className="pointer-events-none absolute left-4 top-4 text-text-dim"><LinkIcon name="mail" /></span><EmailCard /></div>
-            <div className="relative [&>div>button]:pl-12"><span className="pointer-events-none absolute left-4 top-4 text-text-dim"><LinkIcon name="phone" /></span><PhoneCard /></div>
+            <AnimatedCard index={2} className="relative [&>div>button]:pl-12"><span className="pointer-events-none absolute left-4 top-4 text-text-dim"><LinkIcon name="mail" /></span><EmailCard /></AnimatedCard>
+            <AnimatedCard index={3} className="relative [&>div>button]:pl-12"><span className="pointer-events-none absolute left-4 top-4 text-text-dim"><LinkIcon name="phone" /></span><PhoneCard /></AnimatedCard>
 
-            <Link href="/cv" className="sm:col-span-2 border border-rule p-4 hover:border-cyan hover:bg-rule-soft transition-colors flex justify-between items-center group">
+            <AnimatedCard index={4} className="sm:col-span-2"><Link href="/cv" className="border border-rule p-4 hover:border-cyan hover:bg-rule-soft transition-colors flex justify-between items-center group">
               <div className="flex items-center gap-2 text-text group-hover:text-cyan">
                 <LinkIcon name="terminal" />
                 <span>man sakthi (cv)</span>
               </div>
               <span className="text-text-faint group-hover:text-cyan">●</span>
-            </Link>
+            </Link></AnimatedCard>
           </div>
         </section>
 
