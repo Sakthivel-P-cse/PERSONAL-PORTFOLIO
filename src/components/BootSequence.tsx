@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { portfolio } from "@/data/portfolio";
 
 interface BootSequenceProps {
@@ -9,32 +9,46 @@ interface BootSequenceProps {
 
 export default function BootSequence({ onComplete }: BootSequenceProps) {
   const [visibleLines, setVisibleLines] = useState(0);
-  const [skipped, setSkipped] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const skipRef = useRef<HTMLButtonElement>(null);
+  const started = useRef(false);
 
   const complete = useCallback(() => {
     setHidden(true);
     onComplete?.();
   }, [onComplete]);
 
-  const skip = useCallback(() => {
-    setSkipped(true);
-    complete();
-  }, [complete]);
-
   useEffect(() => {
+    if (hidden) return;
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    if (prefersReducedMotion) {
-      complete();
+    let seen = false;
+    try {
+      seen = sessionStorage.getItem("boot-sequence-seen") === "1";
+    } catch {
+      // Continue without session persistence if storage is unavailable.
+    }
+
+    if (prefersReducedMotion || (seen && !started.current)) {
+      setHidden(true);
+      onComplete?.();
       return;
     }
 
+    started.current = true;
+    try {
+      sessionStorage.setItem("boot-sequence-seen", "1");
+    } catch {
+      // Continue without session persistence if storage is unavailable.
+    }
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const skipButton = skipRef.current;
+    skipButton?.focus();
     const totalLines = portfolio.bootSequence.length;
-    const lineInterval = 700;
-    const totalDuration = 5000;
+    const lineInterval = 250;
+    const totalDuration = 2000;
 
     const lineTimer = setInterval(() => {
       setVisibleLines((prev) => {
@@ -47,23 +61,23 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
     }, lineInterval);
 
     const completeTimer = setTimeout(complete, totalDuration);
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") complete();
+      if (event.key === "Tab") event.preventDefault();
+    };
+    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
       clearInterval(lineTimer);
       clearTimeout(completeTimer);
-    };
-  }, [complete]);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" || e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        skip();
+      window.removeEventListener("keydown", handleKeyDown);
+      if (document.activeElement === skipButton || document.activeElement === document.body) {
+        (previousFocus === document.body
+          ? document.querySelector<HTMLElement>(".site-nav a")
+          : previousFocus)?.focus();
       }
     };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [skip]);
+  }, [complete, onComplete, hidden]);
 
   if (hidden) return null;
 
@@ -72,6 +86,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
       className="boot-sequence"
       role="dialog"
       aria-label="Boot sequence"
+      aria-modal="true"
       aria-live="polite"
     >
       <div className="boot-sequence__lines">
@@ -79,7 +94,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
           <div
             key={line}
             className={`boot-sequence__line ${
-              skipped || i < visibleLines ? "opacity-100" : "opacity-0"
+              i < visibleLines ? "opacity-100" : "opacity-0"
             }`}
           >
             {line}
@@ -90,14 +105,15 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
           <circle cx="12" cy="12" r="3" className="motion-safe:animate-pulse [animation-delay:150ms]" />
           <circle cx="20" cy="12" r="3" className="motion-safe:animate-pulse [animation-delay:300ms]" />
         </svg>
-        {!skipped && visibleLines >= portfolio.bootSequence.length && (
+        {visibleLines >= portfolio.bootSequence.length && (
           <div className="boot-sequence__cursor" aria-hidden="true">
             █
           </div>
         )}
       </div>
       <button
-        onClick={skip}
+        ref={skipRef}
+        onClick={complete}
         className="boot-sequence__skip"
         type="button"
         aria-label="Skip boot sequence"

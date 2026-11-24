@@ -365,7 +365,11 @@
   .boot-sequence__skip:hover,
   .boot-sequence__skip:focus-visible {
     color: var(--color-cyan);
-    outline: none;
+  }
+
+  .boot-sequence__skip:focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 4px;
   }
 
   @keyframes boot-cursor-pulse {
