@@ -10,6 +10,7 @@ import BootSequence from "@/components/BootSequence";
 import HeroNetwork from "@/components/home/HeroNetwork";
 import StatusLine from "@/components/home/StatusLine";
 import GoalIcon from "@/components/home/GoalIcon";
+import FeaturedProjects from "@/components/home/FeaturedProjects";
 import { portfolio } from "@/data/portfolio";
 
 const Constellation = dynamic(() => import("@/components/home/Constellation"), { ssr: false });
@@ -105,6 +106,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <FeaturedProjects />
 
       <section id="contact" className="relative min-h-screen flex items-center justify-center py-24 md:py-32">
         <div className="w-[90%] max-w-4xl mx-auto px-4 md:px-0">
