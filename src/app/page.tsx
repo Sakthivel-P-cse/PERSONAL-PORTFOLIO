@@ -9,6 +9,8 @@ import HeroCursor from "@/components/HeroCursor";
 import BootSequence from "@/components/BootSequence";
 import HeroNetwork from "@/components/home/HeroNetwork";
 import GoalIcon from "@/components/home/GoalIcon";
+import ScrollTrace from "@/components/home/ScrollTrace";
+import ContactIcon from "@/components/home/ContactIcon";
 import { portfolio } from "@/data/portfolio";
 
 const Constellation = dynamic(() => import("@/components/home/Constellation"), { ssr: false });
@@ -20,6 +22,7 @@ export default function Home() {
     <>
       <BootSequence />
       <HeroCursor />
+      <ScrollTrace />
       <section className="relative min-h-screen overflow-hidden terminal-hero flex flex-col justify-center items-center md:block">
         <Constellation />
         <div className="relative z-10 w-[90%] max-w-6xl mx-auto pt-16 pb-16 md:pt-[32vh] md:pb-32">
@@ -125,21 +128,21 @@ export default function Home() {
               
               <div className="flex flex-col sm:flex-row sm:gap-8 items-start sm:items-center">
                 <span className="w-24 block sm:inline-block mb-1 sm:mb-0 text-text-faint">contact</span>
-                <ObfuscatedLink
+                <span className="inline-flex items-center gap-2"><ContactIcon type="email" /><ObfuscatedLink
                   href={`mailto:${portfolio.social.email}`}
                   label={portfolio.social.email}
                   external
                   copyOnClick
-                />
+                /></span>
               </div>
               
               <div className="flex flex-col sm:flex-row sm:gap-8 items-start sm:items-center">
                 <span className="w-24 block sm:inline-block mb-1 sm:mb-0 text-text-faint">network</span>
                 <div className="flex gap-4 md:gap-6 flex-wrap">
-                  <ObfuscatedLink href={portfolio.social.github} label="github" external />
-                  <ObfuscatedLink href={portfolio.social.linkedin} label="linkedin" external />
-                  <ObfuscatedLink href="/cv" label="cv" />
-                  <ObfuscatedLink href="/links" label="links" />
+                  <span className="inline-flex items-center gap-2"><ContactIcon type="github" /><ObfuscatedLink href={portfolio.social.github} label="github" external /></span>
+                  <span className="inline-flex items-center gap-2"><ContactIcon type="linkedin" /><ObfuscatedLink href={portfolio.social.linkedin} label="linkedin" external /></span>
+                  <span className="inline-flex items-center gap-2"><ContactIcon type="cv" /><ObfuscatedLink href="/cv" label="cv" /></span>
+                  <span className="inline-flex items-center gap-2"><ContactIcon type="links" /><ObfuscatedLink href="/links" label="links" /></span>
                 </div>
               </div>
             </div>
