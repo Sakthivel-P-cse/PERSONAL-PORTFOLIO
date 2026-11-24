@@ -6,6 +6,18 @@ import PhoneCard from "@/components/PhoneCard";
 
 export const metadata = {
   title: "ssh sakthi@now — links / sakthivel p",
+  description: "Find Sakthivel P's public projects, social profiles, resume and contact details.",
+  openGraph: {
+    title: "Links and Contact — Sakthivel P",
+    description: "Find Sakthivel P's public projects, social profiles, resume and contact details.",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Links and Contact — Sakthivel P",
+    description: "Find Sakthivel P's public projects, social profiles, resume and contact details.",
+    images: ["/opengraph-image"],
+  },
 };
 
 export default function LinksPage() {

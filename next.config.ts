@@ -43,6 +43,7 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  outputFileTracingRoot: __dirname,
   poweredByHeader: false,
   productionBrowserSourceMaps: false,
   async headers() {

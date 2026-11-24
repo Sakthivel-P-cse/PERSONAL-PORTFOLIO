@@ -5,6 +5,18 @@ import GlitchText from "@/components/GlitchText";
 
 export const metadata = {
   title: "man sakthi(1) — sakthivel p",
+  description: "Explore Sakthivel P's experience, education, projects and technical skills.",
+  openGraph: {
+    title: "CV — Sakthivel P",
+    description: "Explore Sakthivel P's experience, education, projects and technical skills.",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CV — Sakthivel P",
+    description: "Explore Sakthivel P's experience, education, projects and technical skills.",
+    images: ["/opengraph-image"],
+  },
 };
 
 function TechStackGlyph({ visual }: { visual: AdvancedTechStackVisual }) {

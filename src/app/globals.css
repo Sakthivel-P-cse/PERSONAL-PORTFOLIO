@@ -71,7 +71,7 @@
   --color-text-bright: #e8e8e8;
   --color-text: #d0d0d0;
   --color-text-dim: #888888;
-  --color-text-faint: #555555;
+  --color-text-faint: #808080;
   --color-text-trace: #333333;
   --color-rule: #222222;
   --color-rule-soft: #1a1a1a;
@@ -97,6 +97,11 @@
   body {
     background-color: #0a0a0a;
     min-height: 100%;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 4px;
   }
 
   html {
@@ -215,13 +220,25 @@
     font-family: var(--font-ibm-plex);
     font-size: 1rem;
   }
-  .site-nav a {
+  .site-nav a,
+  .site-nav button {
     color: var(--color-text-dim);
     transition: color 0.3s ease;
   }
-  .site-nav a:hover {
+  .site-nav a:hover,
+  .site-nav button:hover,
+  .site-nav a[aria-current] {
     color: var(--color-cyan);
   }
+
+  .site-nav button { cursor: pointer; }
+  .command-backdrop { position: fixed; inset: 0; z-index: 200; background: #000b; display: flex; justify-content: center; align-items: flex-start; padding: 15vh 1rem 1rem; }
+  .command-palette { width: min(100%, 32rem); background: #101010; border: 1px solid var(--color-cyan); padding: 1rem; }
+  .command-palette input { width: 100%; background: #0a0a0a; color: var(--color-text-bright); border: 1px solid var(--color-text-dim); padding: .75rem; }
+  .command-option { display: flex; align-items: center; gap: .75rem; padding: .75rem; cursor: pointer; }
+  .command-option[aria-selected="true"] { background: #222; color: var(--color-cyan); }
+  .command-empty { padding: .75rem; color: var(--color-text-dim); }
+  @media (max-width: 480px) { .site-nav { right: 1rem; gap: .75rem; font-size: .85rem; } }
   
   .screen-tear {
     text-shadow: rgba(255, 0, 51, 0.4) -4.87448px 0px 0px,

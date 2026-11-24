@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { portfolio } from "@/data/portfolio";
+import CommandPalette from "@/components/nav/CommandPalette";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sakthivel-portfolio-ecru.vercel.app"),
   title: portfolio.seo.title,
   description: portfolio.seo.description,
   keywords: portfolio.seo.keywords,
@@ -12,7 +14,7 @@ export const metadata: Metadata = {
     description: portfolio.seo.description,
     images: [
       {
-        url: "/images/favicon.png",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
         alt: portfolio.name,
@@ -24,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: portfolio.seo.title,
     description: portfolio.seo.description,
-    images: ["/images/favicon.png"],
+    images: ["/opengraph-image"],
   },
 };
 
@@ -37,10 +39,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className="antialiased font-ibm-plex">
         <main className="relative min-h-screen" style={{ backgroundColor: "#0a0a0a" }}>
-          <nav className="site-nav" aria-label="primary">
-            <a href="/links">links</a>
-            <a href="/cv">cv</a>
-          </nav>
+          <CommandPalette />
           {children}
         </main>
       </body>
