@@ -3,6 +3,7 @@ import { connectLinks, publicRepoLinks } from "@/data/portfolio";
 import ContactForm from "@/components/ContactForm";
 import EmailCard from "@/components/EmailCard";
 import PhoneCard from "@/components/PhoneCard";
+import LinkIcon from "@/components/links/LinkIcon";
 
 export const metadata = {
   title: "ssh sakthi@now — links / sakthivel p",
@@ -42,12 +43,12 @@ export default function LinksPage() {
               className="group block border border-rule hover:border-cyan bg-bg hover:bg-rule-soft transition-colors p-4 relative overflow-hidden"
             >
               <div className="flex items-start gap-4">
-                <div aria-hidden="true" className="text-text-faint group-hover:text-cyan transition-colors font-mono mt-1 w-6 text-center">↓</div>
+                <span className="text-text-dim group-hover:text-cyan"><LinkIcon name="file" /></span>
                 <div className="flex-1 font-semibold text-text group-hover:text-cyan transition-colors">Download Resume</div>
                 <div aria-hidden="true" className="text-text-faint group-hover:text-cyan transition-colors text-xs self-center">download ↓</div>
               </div>
             </a>
-            {publicRepoLinks.map((res, i) => (
+            {publicRepoLinks.map((res) => (
               <a 
                 key={res.id}
                 href={res.href}
@@ -56,9 +57,7 @@ export default function LinksPage() {
                 className="group block border border-rule hover:border-cyan bg-bg hover:bg-rule-soft transition-colors p-4 relative overflow-hidden"
               >
                 <div className="flex items-start gap-4">
-                  <div className="text-text-faint group-hover:text-cyan transition-colors font-mono mt-1 w-6 text-center">
-                    {i % 2 === 0 ? "</>" : "◆"}
-                  </div>
+                  <span className="text-text-dim group-hover:text-cyan"><LinkIcon name="github" /></span>
                   <div className="flex-1">
                     <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 mb-1">
                       <span className="bg-rule-soft text-text-dim text-xs px-2 py-0.5 rounded">
@@ -87,17 +86,17 @@ export default function LinksPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {connectLinks.filter(l => l.external && l.id !== "email" && l.id !== "phone").map(link => (
               <a key={link.id} href={link.href} target="_blank" rel="noopener noreferrer" className="border border-rule p-4 hover:border-cyan hover:bg-rule-soft transition-colors flex justify-between items-center group">
-                <span className="text-text group-hover:text-cyan">{link.label.toLowerCase()}</span>
+                <span className="flex items-center gap-3 text-text group-hover:text-cyan"><LinkIcon name={link.id === "linkedin" ? "linkedin" : "github"} />{link.label.toLowerCase()}</span>
                 <span className="text-text-faint group-hover:text-cyan">▸</span>
               </a>
             ))}
 
-            <EmailCard />
-            <PhoneCard />
+            <div className="relative [&>div>button]:pl-12"><span className="pointer-events-none absolute left-4 top-4 text-text-dim"><LinkIcon name="mail" /></span><EmailCard /></div>
+            <div className="relative [&>div>button]:pl-12"><span className="pointer-events-none absolute left-4 top-4 text-text-dim"><LinkIcon name="phone" /></span><PhoneCard /></div>
 
             <Link href="/cv" className="sm:col-span-2 border border-rule p-4 hover:border-cyan hover:bg-rule-soft transition-colors flex justify-between items-center group">
               <div className="flex items-center gap-2 text-text group-hover:text-cyan">
-                <span>→</span>
+                <LinkIcon name="terminal" />
                 <span>man sakthi (cv)</span>
               </div>
               <span className="text-text-faint group-hover:text-cyan">●</span>
