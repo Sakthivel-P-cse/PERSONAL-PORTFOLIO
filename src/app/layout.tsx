@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { portfolio } from "@/data/portfolio";
+import CommandPalette from "@/components/nav/CommandPalette";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sakthivel-portfolio-ecru.vercel.app"),
@@ -38,10 +39,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className="antialiased font-ibm-plex">
         <main className="relative min-h-screen" style={{ backgroundColor: "#0a0a0a" }}>
-          <nav className="site-nav" aria-label="primary">
-            <a href="/links">links</a>
-            <a href="/cv">cv</a>
-          </nav>
+          <CommandPalette />
           {children}
         </main>
       </body>
