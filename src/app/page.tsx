@@ -7,6 +7,7 @@ import ObfuscatedLink from "@/components/ObfuscatedLink";
 import GlitchText from "@/components/GlitchText";
 import HeroCursor from "@/components/HeroCursor";
 import BootSequence from "@/components/BootSequence";
+import HeroNetwork from "@/components/home/HeroNetwork";
 import { portfolio } from "@/data/portfolio";
 
 const Constellation = dynamic(() => import("@/components/home/Constellation"), { ssr: false });
@@ -40,6 +41,7 @@ export default function Home() {
               </span>
             </div>
           </div>
+          <HeroNetwork />
           
           <div className="md:hidden hero-quote hero-quote--inline text-right screen-tear">
             <GlitchText intensity="extreme" randomGlitchInterval={1500} initialScramble initialScrambleDuration={900}>
