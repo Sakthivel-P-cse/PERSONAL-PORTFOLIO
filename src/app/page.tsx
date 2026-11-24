@@ -8,7 +8,6 @@ import GlitchText from "@/components/GlitchText";
 import HeroCursor from "@/components/HeroCursor";
 import BootSequence from "@/components/BootSequence";
 import HeroNetwork from "@/components/home/HeroNetwork";
-import StatusLine from "@/components/home/StatusLine";
 import GoalIcon from "@/components/home/GoalIcon";
 import FeaturedProjects from "@/components/home/FeaturedProjects";
 import { portfolio } from "@/data/portfolio";
@@ -56,7 +55,6 @@ export default function Home() {
               {"don't fail when you need them."}
             </GlitchText>
             </div>
-            <StatusLine />
           </div>
         </div>
         
@@ -70,7 +68,6 @@ export default function Home() {
             {"don't fail when you need them."}
           </GlitchText>
           </div>
-          <StatusLine />
         </div>
       </section>
 
