@@ -72,9 +72,11 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
       clearTimeout(completeTimer);
       window.removeEventListener("keydown", handleKeyDown);
       if (document.activeElement === skipButton || document.activeElement === document.body) {
-        (previousFocus === document.body
-          ? document.querySelector<HTMLElement>(".site-nav a")
-          : previousFocus)?.focus();
+        if (previousFocus && previousFocus !== document.body && previousFocus.isConnected && !previousFocus.closest("nav a")) {
+          previousFocus.focus();
+        } else {
+          skipButton?.blur();
+        }
       }
     };
   }, [complete, onComplete, hidden]);
