@@ -2,6 +2,7 @@ import Link from "next/link";
 import { portfolio } from "@/data/portfolio";
 import { advancedTechStack, type AdvancedTechStackVisual } from "@/data/cv";
 import GlitchText from "@/components/GlitchText";
+import TableOfContents from "@/components/cv/TableOfContents";
 
 export const metadata = {
   title: "man sakthi(1) — sakthivel p",
@@ -249,15 +250,7 @@ export default function CVPage() {
 
         <div className="order-1 md:order-2">
           <div className="sticky top-8 space-y-8">
-            <nav className="space-y-2 text-sm">
-              <div className="text-text-faint mb-4 uppercase text-xs tracking-wider">table of contents</div>
-              <a href="#name" className="block text-text hover:text-cyan transition-colors">001 NAME</a>
-              <a href="#description" className="block text-text-dim hover:text-cyan transition-colors">002 DESCRIPTION</a>
-              <a href="#education" className="block text-text-dim hover:text-cyan transition-colors">003 EDUCATION</a>
-              <a href="#experience" className="block text-text-dim hover:text-cyan transition-colors">004 EXPERIENCE</a>
-              <a href="#projects" className="block text-text-dim hover:text-cyan transition-colors">005 PROJECTS</a>
-              <a href="#stack" className="block text-text-dim hover:text-cyan transition-colors">006 TECH STACK</a>
-            </nav>
+            <TableOfContents />
             
             <div className="space-y-4 text-xs font-mono bg-rule-soft p-4 rounded border border-rule">
               <div className="text-text-faint mb-2">STATUS</div>
