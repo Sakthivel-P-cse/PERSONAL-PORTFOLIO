@@ -3,6 +3,7 @@ import { portfolio } from "@/data/portfolio";
 import { advancedTechStack, type AdvancedTechStackVisual } from "@/data/cv";
 import GlitchText from "@/components/GlitchText";
 import TableOfContents from "@/components/cv/TableOfContents";
+import RevealSection from "@/components/cv/RevealSection";
 
 export const metadata = {
   title: "man sakthi(1) — sakthivel p",
@@ -116,7 +117,7 @@ export default function CVPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-[1fr_250px] gap-12">
         <div className="order-2 md:order-1 space-y-16">
-          <section id="name" className="space-y-4">
+          <RevealSection id="name" className="space-y-4">
             <div className="flex items-baseline gap-4">
               <span className="text-text-faint text-xs">001</span>
               <h2 className="text-xl font-bold">NAME</h2>
@@ -132,9 +133,9 @@ export default function CVPage() {
               </GlitchText>
               <span>— {portfolio.headline.toLowerCase()}</span>
             </div>
-          </section>
+          </RevealSection>
 
-          <section id="description" className="space-y-4">
+          <RevealSection id="description" className="space-y-4">
             <div className="flex items-baseline gap-4">
               <span className="text-text-faint text-xs">002</span>
               <h2 className="text-xl font-bold">DESCRIPTION</h2>
@@ -142,9 +143,9 @@ export default function CVPage() {
             <p className="pl-8 text-text-dim leading-relaxed">
               {portfolio.seo.description.toLowerCase()} ships fast, writes clean architecture, and scales infrastructure.
             </p>
-          </section>
+          </RevealSection>
 
-          <section id="education" className="space-y-4">
+          <RevealSection id="education" className="space-y-4">
             <div className="flex items-baseline gap-4">
               <span className="text-text-faint text-xs">003</span>
               <h2 className="text-xl font-bold">EDUCATION</h2>
@@ -159,9 +160,9 @@ export default function CVPage() {
                 <span>{portfolio.education.location}</span>
               </div>
             </div>
-          </section>
+          </RevealSection>
 
-          <section id="experience" className="space-y-6">
+          <RevealSection id="experience" className="space-y-6">
             <div className="flex items-baseline gap-4">
               <span className="text-text-faint text-xs">004</span>
               <h2 className="text-xl font-bold">EXPERIENCE</h2>
@@ -183,9 +184,9 @@ export default function CVPage() {
                 </div>
               ))}
             </div>
-          </section>
+          </RevealSection>
 
-          <section id="projects" className="space-y-4">
+          <RevealSection id="projects" className="space-y-4">
             <div className="flex items-baseline gap-4">
               <span className="text-text-faint text-xs">005</span>
               <h2 className="text-xl font-bold">PROJECTS</h2>
@@ -207,9 +208,9 @@ export default function CVPage() {
                 </div>
               ))}
             </div>
-          </section>
+          </RevealSection>
 
-          <section id="stack" className="space-y-6">
+          <RevealSection id="stack" className="space-y-6">
             <div className="flex items-baseline gap-4">
               <span className="text-text-faint text-xs">006</span>
               <h2 className="text-xl font-bold">TECH STACK</h2>
@@ -237,7 +238,7 @@ export default function CVPage() {
                 </article>
               ))}
             </div>
-          </section>
+          </RevealSection>
 
           <div className="pt-8 pb-4">
             <Link href="/" className="text-text hover:text-cyan transition-colors">
