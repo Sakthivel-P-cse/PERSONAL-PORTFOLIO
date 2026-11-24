@@ -252,6 +252,11 @@ export default function CVPage() {
         <div className="order-1 md:order-2">
           <div className="sticky top-8 space-y-8">
             <TableOfContents />
+
+            <a href="/cv/resume.pdf" download className="inline-flex items-center gap-2 border border-cyan px-3 py-2 text-sm text-cyan hover:bg-cyan hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan">
+              <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v12m-4-4 4 4 4-4M4 17v3h16v-3" /></svg>
+              Download PDF
+            </a>
             
             <div className="space-y-4 text-xs font-mono bg-rule-soft p-4 rounded border border-rule">
               <div className="text-text-faint mb-2">STATUS</div>
