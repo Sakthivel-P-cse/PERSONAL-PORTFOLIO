@@ -4,6 +4,7 @@ import { advancedTechStack, type AdvancedTechStackVisual } from "@/data/cv";
 import GlitchText from "@/components/GlitchText";
 import TableOfContents from "@/components/cv/TableOfContents";
 import RevealSection from "@/components/cv/RevealSection";
+import FeaturedProjects from "@/components/cv/FeaturedProjects";
 import styles from "./print.module.css";
 
 export const metadata = {
@@ -187,29 +188,7 @@ export default function CVPage() {
             </div>
           </RevealSection>
 
-          <RevealSection id="projects" className="space-y-4">
-            <div className="flex items-baseline gap-4">
-              <span className="text-text-faint text-xs">005</span>
-              <h2 className="text-xl font-bold">PROJECTS</h2>
-            </div>
-            <div className="pl-8 space-y-6">
-              {portfolio.projects.filter(p => p.featured).map((project, i) => (
-                <div key={i}>
-                  <div className="flex justify-between group">
-                    <a href={project.repository} target="_blank" rel="noopener noreferrer" className="text-text hover:text-cyan transition-colors underline decoration-rule underline-offset-4">
-                      {project.name}
-                    </a>
-                  </div>
-                  <div className="text-text-dim mt-1">{project.description.toLowerCase()}</div>
-                  <div className="text-text-faint text-xs mt-2 flex flex-wrap gap-2">
-                    {project.technologies.map((t, idx) => (
-                      <span key={idx}>[{t.toLowerCase()}]</span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </RevealSection>
+          <FeaturedProjects />
 
           <RevealSection id="stack" className="space-y-6">
             <div className="flex items-baseline gap-4">
