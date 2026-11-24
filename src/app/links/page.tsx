@@ -5,6 +5,7 @@ import EmailCard from "@/components/EmailCard";
 import PhoneCard from "@/components/PhoneCard";
 import LinkIcon from "@/components/links/LinkIcon";
 import AnimatedCard from "@/components/links/AnimatedCard";
+import ConnectingLine from "@/components/links/ConnectingLine";
 
 export const metadata = {
   title: "ssh sakthi@now — links / sakthivel p",
@@ -26,6 +27,7 @@ export default function LinksPage() {
           <span className="hidden sm:inline">-- LINKS --</span>
           <span>2026-08-17 · SAKTHI@NOW</span>
         </div>
+        <ConnectingLine />
       </header>
 
       <div className="space-y-16">
