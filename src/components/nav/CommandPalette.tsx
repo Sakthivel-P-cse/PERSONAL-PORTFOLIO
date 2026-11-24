@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { portfolio } from "@/data/portfolio";
 import { Activity, File, Github, Linkedin, Mail, Network, Terminal } from "./NavIcons";
 
@@ -12,12 +12,14 @@ const commands = [
   { label: "Contact", href: "/#contact", icon: Mail },
   { label: "CV", href: "/cv", icon: File },
   { label: "Links", href: "/links", icon: Activity },
-  { label: "GitHub", href: portfolio.social.github, icon: Github },
-  { label: "LinkedIn", href: portfolio.social.linkedin, icon: Linkedin },
+  { label: "GitHub", href: portfolio.social.github, icon: Github, external: true },
+  { label: "LinkedIn", href: portfolio.social.linkedin, icon: Linkedin, external: true },
+  { label: "Email", href: `mailto:${portfolio.social.email}`, icon: Mail, email: true },
 ];
 
 export default function CommandPalette() {
   const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState(0);
@@ -54,6 +56,12 @@ export default function CommandPalette() {
   }, [pathname]);
 
   const close = () => { setOpen(false); setQuery(""); setSelected(0); };
+  const activate = (command: (typeof commands)[number]) => {
+    if ("external" in command) window.open(command.href, "_blank", "noopener,noreferrer");
+    else if ("email" in command) window.location.href = command.href;
+    else router.push(command.href);
+    close();
+  };
 
   return <>
     <nav className="site-nav" aria-label="Primary navigation">
@@ -69,11 +77,11 @@ export default function CommandPalette() {
         if (event.key === "Tab") { event.preventDefault(); input.current?.focus(); }
         if (event.key === "ArrowDown" && results.length) { event.preventDefault(); setSelected((selected + 1) % results.length); }
         if (event.key === "ArrowUp" && results.length) { event.preventDefault(); setSelected((selected + results.length - 1) % results.length); }
-        if (event.key === "Enter" && results[selected]) { event.preventDefault(); window.location.assign(results[selected].href); close(); }
+        if (event.key === "Enter" && results[selected]) { event.preventDefault(); activate(results[selected]); }
       }}>
         <input ref={input} value={query} onChange={(event) => { setQuery(event.target.value); setSelected(0); }} placeholder="Search commands..." aria-label="Search commands" role="combobox" aria-expanded="true" aria-controls="command-results" aria-activedescendant={results[selected] ? `command-${selected}` : undefined} autoComplete="off" />
         <div id="command-results" role="listbox" aria-label="Commands">
-          {results.map((command, index) => <div key={command.label} id={`command-${index}`} role="option" aria-selected={index === selected} className="command-option" onMouseEnter={() => setSelected(index)} onClick={() => { window.location.assign(command.href); close(); }}><command.icon />{command.label}</div>)}
+          {results.map((command, index) => <div key={command.label} id={`command-${index}`} role="option" aria-selected={index === selected} className="command-option" onMouseEnter={() => setSelected(index)} onClick={() => activate(command)}><command.icon />{command.label}</div>)}
           {results.length === 0 && <p className="command-empty">No commands found.</p>}
         </div>
       </div>
