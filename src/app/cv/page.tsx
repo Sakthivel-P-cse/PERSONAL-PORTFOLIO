@@ -2,9 +2,25 @@ import Link from "next/link";
 import { portfolio } from "@/data/portfolio";
 import { advancedTechStack, type AdvancedTechStackVisual } from "@/data/cv";
 import GlitchText from "@/components/GlitchText";
+import TableOfContents from "@/components/cv/TableOfContents";
+import RevealSection from "@/components/cv/RevealSection";
+import FeaturedProjects from "@/components/cv/FeaturedProjects";
+import styles from "./print.module.css";
 
 export const metadata = {
   title: "man sakthi(1) — sakthivel p",
+  description: "Explore Sakthivel P's experience, education, projects and technical skills.",
+  openGraph: {
+    title: "CV — Sakthivel P",
+    description: "Explore Sakthivel P's experience, education, projects and technical skills.",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CV — Sakthivel P",
+    description: "Explore Sakthivel P's experience, education, projects and technical skills.",
+    images: ["/opengraph-image"],
+  },
 };
 
 function TechStackGlyph({ visual }: { visual: AdvancedTechStackVisual }) {
@@ -17,7 +33,7 @@ function TechStackGlyph({ visual }: { visual: AdvancedTechStackVisual }) {
   };
 
   return (
-    <svg viewBox="0 0 52 32" className="h-8 w-[52px]" aria-hidden="true">
+    <svg viewBox="0 0 52 32" className="h-6 w-[39px]" aria-hidden="true">
       <path d="M1 30.5H51" className="text-text-trace" stroke="currentColor" strokeWidth="0.5" />
       {visual === "consensus" && (
         <>
@@ -36,11 +52,9 @@ function TechStackGlyph({ visual }: { visual: AdvancedTechStackVisual }) {
         </>
       )}
       {visual === "observability" && (
-        <>
-          <path d="M6 24V18M14 24V11M22 24V15M30 24V7M38 24V13M46 24V5" {...common} />
-          <path d="M5 27h42" {...common} />
-          <path d="m6 8 8 4 8-3 8 5 8-9 8 3" {...common} />
-        </>
+        <svg x="14" y="4" width="24" height="24" viewBox="0 0 24 24" {...common}>
+          <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />
+        </svg>
       )}
       {visual === "security" && (
         <>
@@ -61,13 +75,10 @@ function TechStackGlyph({ visual }: { visual: AdvancedTechStackVisual }) {
         </>
       )}
       {visual === "network" && (
-        <>
-          <path d="M12 16h28M26 7v18M12 16l14-9 14 9-14 9-14-9Z" {...common} />
-          <circle cx="12" cy="16" r="3" {...common} />
-          <circle cx="26" cy="7" r="3" {...common} />
-          <circle cx="40" cy="16" r="3" {...common} />
-          <circle cx="26" cy="25" r="3" {...common} />
-        </>
+        <svg x="14" y="4" width="24" height="24" viewBox="0 0 24 24" {...common}>
+          <rect x="16" y="16" width="6" height="6" rx="1" /><rect x="2" y="16" width="6" height="6" rx="1" /><rect x="9" y="2" width="6" height="6" rx="1" />
+          <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3M12 12V8" />
+        </svg>
       )}
       {visual === "retrieval" && (
         <>
@@ -92,12 +103,9 @@ function TechStackGlyph({ visual }: { visual: AdvancedTechStackVisual }) {
         </>
       )}
       {visual === "delivery" && (
-        <>
-          <path d="M8 16h28" {...common} />
-          <path d="m31 9 7 7-7 7" {...common} />
-          <path d="M8 10v12M15 10v12M22 10v12" {...common} />
-          <circle cx="8" cy="16" r="2" {...common} />
-        </>
+        <svg x="14" y="4" width="24" height="24" viewBox="0 0 24 24" {...common}>
+          <path d="M8 9l3 3-3 3M13 15h3M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6" />
+        </svg>
       )}
     </svg>
   );
@@ -105,8 +113,8 @@ function TechStackGlyph({ visual }: { visual: AdvancedTechStackVisual }) {
 
 export default function CVPage() {
   return (
-    <div className="min-h-screen text-text py-16 px-4 md:px-8 max-w-4xl mx-auto font-ibm-plex text-sm md:text-base">
-      <header className="mb-12 border-b border-rule pb-4">
+    <div className={`${styles.resume} min-h-screen text-text py-16 px-4 md:px-8 max-w-4xl mx-auto font-ibm-plex text-sm md:text-base`}>
+      <header className={`${styles.screenOnly} mb-12 border-b border-rule pb-4`}>
         <div className="flex justify-between items-center mb-4">
           <div className="text-text-faint">
             [ <span className="text-text">man 1 sakthi</span> ]
@@ -121,9 +129,9 @@ export default function CVPage() {
         </div>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_250px] gap-12">
+      <div className={`${styles.content} grid grid-cols-1 md:grid-cols-[1fr_250px] gap-12`}>
         <div className="order-2 md:order-1 space-y-16">
-          <section id="name" className="space-y-4">
+          <RevealSection id="name" className="space-y-4">
             <div className="flex items-baseline gap-4">
               <span className="text-text-faint text-xs">001</span>
               <h2 className="text-xl font-bold">NAME</h2>
@@ -139,9 +147,9 @@ export default function CVPage() {
               </GlitchText>
               <span>— {portfolio.headline.toLowerCase()}</span>
             </div>
-          </section>
+          </RevealSection>
 
-          <section id="description" className="space-y-4">
+          <RevealSection id="description" className="space-y-4">
             <div className="flex items-baseline gap-4">
               <span className="text-text-faint text-xs">002</span>
               <h2 className="text-xl font-bold">DESCRIPTION</h2>
@@ -149,9 +157,9 @@ export default function CVPage() {
             <p className="pl-8 text-text-dim leading-relaxed">
               {portfolio.seo.description.toLowerCase()} ships fast, writes clean architecture, and scales infrastructure.
             </p>
-          </section>
+          </RevealSection>
 
-          <section id="education" className="space-y-4">
+          <RevealSection id="education" className="space-y-4">
             <div className="flex items-baseline gap-4">
               <span className="text-text-faint text-xs">003</span>
               <h2 className="text-xl font-bold">EDUCATION</h2>
@@ -166,9 +174,9 @@ export default function CVPage() {
                 <span>{portfolio.education.location}</span>
               </div>
             </div>
-          </section>
+          </RevealSection>
 
-          <section id="experience" className="space-y-6">
+          <RevealSection id="experience" className="space-y-6">
             <div className="flex items-baseline gap-4">
               <span className="text-text-faint text-xs">004</span>
               <h2 className="text-xl font-bold">EXPERIENCE</h2>
@@ -190,33 +198,11 @@ export default function CVPage() {
                 </div>
               ))}
             </div>
-          </section>
+          </RevealSection>
 
-          <section id="projects" className="space-y-4">
-            <div className="flex items-baseline gap-4">
-              <span className="text-text-faint text-xs">005</span>
-              <h2 className="text-xl font-bold">PROJECTS</h2>
-            </div>
-            <div className="pl-8 space-y-6">
-              {portfolio.projects.filter(p => p.featured).map((project, i) => (
-                <div key={i}>
-                  <div className="flex justify-between group">
-                    <a href={project.repository} target="_blank" rel="noopener noreferrer" className="text-text hover:text-cyan transition-colors underline decoration-rule underline-offset-4">
-                      {project.name}
-                    </a>
-                  </div>
-                  <div className="text-text-dim mt-1">{project.description.toLowerCase()}</div>
-                  <div className="text-text-faint text-xs mt-2 flex flex-wrap gap-2">
-                    {project.technologies.map((t, idx) => (
-                      <span key={idx}>[{t.toLowerCase()}]</span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
+          <FeaturedProjects />
 
-          <section id="stack" className="space-y-6">
+          <RevealSection id="stack" className="space-y-6">
             <div className="flex items-baseline gap-4">
               <span className="text-text-faint text-xs">006</span>
               <h2 className="text-xl font-bold">TECH STACK</h2>
@@ -225,7 +211,7 @@ export default function CVPage() {
               {advancedTechStack.map((card, index) => (
                 <article
                   key={card.title}
-                  className="stack-card group relative overflow-hidden border border-rule bg-rule-soft p-4 transition-all duration-300 hover:-translate-y-1 hover:border-cyan hover:shadow-[0_0_24px_rgba(0,255,213,0.08)]"
+                  className="stack-card group relative overflow-hidden border border-rule bg-rule-soft p-4 border-l-2 transition-colors duration-300 motion-safe:transition-transform motion-safe:hover:-translate-y-1 hover:border-cyan hover:shadow-[0_4px_20px_rgba(0,255,213,0.12)]"
                 >
                   <div className="relative z-10 mb-6 flex items-start justify-between">
                     <div className="stack-card-glyph text-text-dim transition-colors duration-300 group-hover:text-cyan">
@@ -244,29 +230,21 @@ export default function CVPage() {
                 </article>
               ))}
             </div>
-          </section>
+          </RevealSection>
 
-          <div className="pt-8 pb-4">
+          <div className={`${styles.screenOnly} pt-8 pb-4`}>
             <Link href="/" className="text-text hover:text-cyan transition-colors">
               ← back to /
             </Link>
           </div>
 
-          <div className="text-center text-text-faint pt-8">(END)</div>
+          <div className={`${styles.screenOnly} text-center text-text-faint pt-8`}>(END)</div>
         </div>
 
-        <div className="order-1 md:order-2">
+        <div className={`${styles.sidebar} order-1 md:order-2`}>
           <div className="sticky top-8 space-y-8">
-            <nav className="space-y-2 text-sm">
-              <div className="text-text-faint mb-4 uppercase text-xs tracking-wider">table of contents</div>
-              <a href="#name" className="block text-text hover:text-cyan transition-colors">001 NAME</a>
-              <a href="#description" className="block text-text-dim hover:text-cyan transition-colors">002 DESCRIPTION</a>
-              <a href="#education" className="block text-text-dim hover:text-cyan transition-colors">003 EDUCATION</a>
-              <a href="#experience" className="block text-text-dim hover:text-cyan transition-colors">004 EXPERIENCE</a>
-              <a href="#projects" className="block text-text-dim hover:text-cyan transition-colors">005 PROJECTS</a>
-              <a href="#stack" className="block text-text-dim hover:text-cyan transition-colors">006 TECH STACK</a>
-            </nav>
-            
+            <TableOfContents />
+
             <div className="space-y-4 text-xs font-mono bg-rule-soft p-4 rounded border border-rule">
               <div className="text-text-faint mb-2">STATUS</div>
               
@@ -309,7 +287,7 @@ export default function CVPage() {
         </div>
       </div>
 
-      <footer className="mt-24 border-t border-rule pt-4 flex justify-between text-text-faint text-xs">
+      <footer className={`${styles.screenOnly} mt-24 border-t border-rule pt-4 flex justify-between text-text-faint text-xs`}>
         <div>
           sakthi@home : /cv $ █
         </div>

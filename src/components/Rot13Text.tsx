@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 interface Rot13TextProps {
   originalText: string;
@@ -26,6 +26,7 @@ function isLetter(character: string) {
 }
 
 export default function Rot13Text({ originalText, delay = 0 }: Rot13TextProps) {
+  const reduceMotion = useReducedMotion();
   const encodedText = rot13(originalText);
   const [isHovered, setIsHovered] = useState(false);
   const [resolvedCount, setResolvedCount] = useState(0);
@@ -100,7 +101,7 @@ export default function Rot13Text({ originalText, delay = 0 }: Rot13TextProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: -20 }}
+      initial={reduceMotion ? false : { opacity: 0, x: -20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
@@ -111,7 +112,8 @@ export default function Rot13Text({ originalText, delay = 0 }: Rot13TextProps) {
       onBlur={resetReveal}
     >
       <p className="text-base md:text-lg lg:text-xl text-text font-light leading-relaxed">
-        <span className="block" role="text" aria-label={originalText} style={{ cursor: "text" }}>
+        <span className="block" style={{ cursor: "text" }}>
+          <span className="sr-only">{originalText}</span>
           <span aria-hidden="true">
             {displayChars.map((character, index) => {
               const encodedCharacter = encodedText[index];

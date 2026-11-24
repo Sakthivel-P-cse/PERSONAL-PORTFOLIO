@@ -24,7 +24,12 @@ export default function ContactForm() {
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        cache: "no-store",
+        credentials: "same-origin",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           name: formData.get("name"),
           email: formData.get("email"),
@@ -83,7 +88,7 @@ export default function ContactForm() {
           rows={7}
           maxLength={4000}
           placeholder="Message"
-          className="w-full resize-y border border-rule bg-bg px-4 py-3 text-sm text-text outline-none transition-colors placeholder:text-text-faint focus:border-cyan focus:ring-1 focus:ring-cyan/20"
+          className="w-full resize-y border border-rule bg-bg px-4 py-3 text-sm text-text transition-colors placeholder:text-text-faint focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
         />
       </div>
 
@@ -94,22 +99,23 @@ export default function ContactForm() {
 
       <div className="flex flex-col gap-5 border-t border-rule pt-5 sm:flex-row sm:items-center sm:justify-between">
         <p
-          className={`text-xs tracking-[0.16em] ${
-            status === "error" ? "text-crimson" : "text-text-faint"
-          }`}
+          className="text-xs tracking-[0.16em] text-text"
           aria-live="polite"
+          aria-atomic="true"
         >
-          {status === "sent"
+          {status === "sending"
+            ? "◎ SENDING MESSAGE..."
+            : status === "sent"
             ? "◎ MESSAGE SENT — THANKS."
             : status === "error"
-              ? errorMessage
+              ? `ERROR — ${errorMessage}`
               : "◎ THANKS — I'LL REPLY SOON."}
         </p>
 
         <button
           type="submit"
           disabled={isSending}
-          className="group inline-flex items-center justify-between gap-5 border border-cyan bg-cyan px-5 py-3 text-xs font-medium tracking-[0.18em] text-bg transition-colors hover:bg-transparent hover:text-cyan disabled:cursor-wait disabled:opacity-60"
+          className="group inline-flex items-center justify-between gap-5 border border-cyan bg-cyan px-5 py-3 text-xs font-medium tracking-[0.18em] text-bg transition-colors hover:bg-transparent hover:text-cyan focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan disabled:cursor-wait disabled:opacity-60"
         >
           <span>{isSending ? "SENDING..." : "SEND MESSAGE"}</span>
           <span
@@ -155,7 +161,7 @@ function Field({
         maxLength={name === "subject" ? 140 : name === "email" ? 254 : 80}
         autoComplete={autoComplete}
         placeholder={placeholder}
-        className="w-full border border-rule bg-bg px-4 py-3 text-sm text-text outline-none transition-colors placeholder:text-text-faint focus:border-cyan focus:ring-1 focus:ring-cyan/20"
+        className="w-full border border-rule bg-bg px-4 py-3 text-sm text-text transition-colors placeholder:text-text-faint focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
       />
     </div>
   );
