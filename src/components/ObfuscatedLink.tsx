@@ -45,6 +45,11 @@ export default function ObfuscatedLink({
   const startReveal = useCallback(() => {
     cancelReveal();
     setIsHovered(true);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setResolvedCount(label.length);
+      setScrambledChars(label.split(""));
+      return;
+    }
     setResolvedCount(0);
     setScrambledChars(scrambledText(label.length));
 

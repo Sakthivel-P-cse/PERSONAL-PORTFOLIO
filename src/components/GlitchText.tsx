@@ -126,7 +126,8 @@ export default function GlitchText({
       }
       transition={{ duration: extreme ? 0.1 : 0.08, ease: "easeOut" }}
     >
-      <span className="relative z-10">{display}</span>
+      <span className="sr-only">{children}</span>
+      <span className="relative z-10" aria-hidden="true">{display}</span>
       {glitching && (
         <>
           <span

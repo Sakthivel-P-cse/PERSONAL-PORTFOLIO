@@ -71,7 +71,7 @@
   --color-text-bright: #e8e8e8;
   --color-text: #d0d0d0;
   --color-text-dim: #888888;
-  --color-text-faint: #555555;
+  --color-text-faint: #808080;
   --color-text-trace: #333333;
   --color-rule: #222222;
   --color-rule-soft: #1a1a1a;
@@ -97,6 +97,11 @@
   body {
     background-color: #0a0a0a;
     min-height: 100%;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 4px;
   }
 
   html {
