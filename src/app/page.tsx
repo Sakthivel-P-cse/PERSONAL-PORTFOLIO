@@ -1,12 +1,15 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import dynamic from "next/dynamic";
 import Rot13Text from "@/components/Rot13Text";
 import ObfuscatedLink from "@/components/ObfuscatedLink";
 import GlitchText from "@/components/GlitchText";
 import HeroCursor from "@/components/HeroCursor";
 import BootSequence from "@/components/BootSequence";
 import { portfolio } from "@/data/portfolio";
+
+const Constellation = dynamic(() => import("@/components/home/Constellation"), { ssr: false });
 
 export default function Home() {
   const reducedMotion = useReducedMotion();
@@ -16,6 +19,7 @@ export default function Home() {
       <BootSequence />
       <HeroCursor />
       <section className="relative min-h-screen overflow-hidden terminal-hero flex flex-col justify-center items-center md:block">
+        <Constellation />
         <div className="relative z-10 w-[90%] max-w-6xl mx-auto pt-16 pb-16 md:pt-[32vh] md:pb-32">
           <div className="space-y-5 md:space-y-4">
             <div className="hero-title screen-tear">
