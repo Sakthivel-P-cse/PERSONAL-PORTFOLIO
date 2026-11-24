@@ -4,6 +4,7 @@ import { advancedTechStack, type AdvancedTechStackVisual } from "@/data/cv";
 import GlitchText from "@/components/GlitchText";
 import TableOfContents from "@/components/cv/TableOfContents";
 import RevealSection from "@/components/cv/RevealSection";
+import styles from "./print.module.css";
 
 export const metadata = {
   title: "man sakthi(1) — sakthivel p",
@@ -99,8 +100,8 @@ function TechStackGlyph({ visual }: { visual: AdvancedTechStackVisual }) {
 
 export default function CVPage() {
   return (
-    <div className="min-h-screen text-text py-16 px-4 md:px-8 max-w-4xl mx-auto font-ibm-plex text-sm md:text-base">
-      <header className="mb-12 border-b border-rule pb-4">
+    <div className={`${styles.resume} min-h-screen text-text py-16 px-4 md:px-8 max-w-4xl mx-auto font-ibm-plex text-sm md:text-base`}>
+      <header className={`${styles.screenOnly} mb-12 border-b border-rule pb-4`}>
         <div className="flex justify-between items-center mb-4">
           <div className="text-text-faint">
             [ <span className="text-text">man 1 sakthi</span> ]
@@ -115,7 +116,7 @@ export default function CVPage() {
         </div>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_250px] gap-12">
+      <div className={`${styles.content} grid grid-cols-1 md:grid-cols-[1fr_250px] gap-12`}>
         <div className="order-2 md:order-1 space-y-16">
           <RevealSection id="name" className="space-y-4">
             <div className="flex items-baseline gap-4">
@@ -240,16 +241,16 @@ export default function CVPage() {
             </div>
           </RevealSection>
 
-          <div className="pt-8 pb-4">
+          <div className={`${styles.screenOnly} pt-8 pb-4`}>
             <Link href="/" className="text-text hover:text-cyan transition-colors">
               ← back to /
             </Link>
           </div>
 
-          <div className="text-center text-text-faint pt-8">(END)</div>
+          <div className={`${styles.screenOnly} text-center text-text-faint pt-8`}>(END)</div>
         </div>
 
-        <div className="order-1 md:order-2">
+        <div className={`${styles.sidebar} order-1 md:order-2`}>
           <div className="sticky top-8 space-y-8">
             <TableOfContents />
 
@@ -300,7 +301,7 @@ export default function CVPage() {
         </div>
       </div>
 
-      <footer className="mt-24 border-t border-rule pt-4 flex justify-between text-text-faint text-xs">
+      <footer className={`${styles.screenOnly} mt-24 border-t border-rule pt-4 flex justify-between text-text-faint text-xs`}>
         <div>
           sakthi@home : /cv $ █
         </div>
