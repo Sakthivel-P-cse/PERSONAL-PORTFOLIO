@@ -19,7 +19,7 @@ function TechStackGlyph({ visual }: { visual: AdvancedTechStackVisual }) {
   };
 
   return (
-    <svg viewBox="0 0 52 32" className="h-8 w-[52px]" aria-hidden="true">
+    <svg viewBox="0 0 52 32" className="h-6 w-[39px]" aria-hidden="true">
       <path d="M1 30.5H51" className="text-text-trace" stroke="currentColor" strokeWidth="0.5" />
       {visual === "consensus" && (
         <>
@@ -219,7 +219,7 @@ export default function CVPage() {
               {advancedTechStack.map((card, index) => (
                 <article
                   key={card.title}
-                  className="stack-card group relative overflow-hidden border border-rule bg-rule-soft p-4 transition-all duration-300 hover:-translate-y-1 hover:border-cyan hover:shadow-[0_0_24px_rgba(0,255,213,0.08)]"
+                  className="stack-card group relative overflow-hidden border border-rule bg-rule-soft p-4 border-l-2 transition-colors duration-300 motion-safe:transition-transform motion-safe:hover:-translate-y-1 hover:border-cyan hover:shadow-[0_4px_20px_rgba(0,255,213,0.12)]"
                 >
                   <div className="relative z-10 mb-6 flex items-start justify-between">
                     <div className="stack-card-glyph text-text-dim transition-colors duration-300 group-hover:text-cyan">
