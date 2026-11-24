@@ -8,6 +8,8 @@ import GlitchText from "@/components/GlitchText";
 import HeroCursor from "@/components/HeroCursor";
 import BootSequence from "@/components/BootSequence";
 import HeroNetwork from "@/components/home/HeroNetwork";
+import StatusLine from "@/components/home/StatusLine";
+import GoalIcon from "@/components/home/GoalIcon";
 import { portfolio } from "@/data/portfolio";
 
 const Constellation = dynamic(() => import("@/components/home/Constellation"), { ssr: false });
@@ -43,7 +45,8 @@ export default function Home() {
           </div>
           <HeroNetwork />
           
-          <div className="md:hidden hero-quote hero-quote--inline text-right screen-tear">
+          <div className="md:hidden hero-quote hero-quote--inline text-right">
+            <div className="screen-tear">
             <GlitchText intensity="extreme" randomGlitchInterval={1500} initialScramble initialScrambleDuration={900}>
               Building systems that
             </GlitchText>
@@ -51,10 +54,13 @@ export default function Home() {
             <GlitchText intensity="extreme" randomGlitchInterval={1500} initialScramble initialScrambleDuration={900}>
               {"don't fail when you need them."}
             </GlitchText>
+            </div>
+            <StatusLine />
           </div>
         </div>
         
-        <div className="hidden md:block absolute z-10 hero-quote text-right max-w-md screen-tear" style={{ right: "3rem", bottom: "76px" }}>
+        <div className="hidden md:block absolute z-10 hero-quote text-right max-w-md" style={{ right: "3rem", bottom: "76px" }}>
+          <div className="screen-tear">
           <GlitchText intensity="extreme" randomGlitchInterval={1500} initialScramble initialScrambleDuration={900}>
             Building systems that
           </GlitchText>
@@ -62,6 +68,8 @@ export default function Home() {
           <GlitchText intensity="extreme" randomGlitchInterval={1500} initialScramble initialScrambleDuration={900}>
             {"don't fail when you need them."}
           </GlitchText>
+          </div>
+          <StatusLine />
         </div>
       </section>
 
@@ -90,10 +98,10 @@ export default function Home() {
           </motion.h2>
           
           <div className="space-y-8 md:space-y-6">
-            <Rot13Text originalText="build scalable infrastructure" delay={0.1} />
-            <Rot13Text originalText="design fault-tolerant systems" delay={0.3} />
-            <Rot13Text originalText="optimize backend performance" delay={0.4} />
-            <Rot13Text originalText="ship zero-trust architectures" delay={0.5} />
+            <div className="flex items-center gap-4"><GoalIcon type="infrastructure" delay={0.1} /><Rot13Text originalText="build scalable infrastructure" delay={0.1} /></div>
+            <div className="flex items-center gap-4"><GoalIcon type="resilience" delay={0.3} /><Rot13Text originalText="design fault-tolerant systems" delay={0.3} /></div>
+            <div className="flex items-center gap-4"><GoalIcon type="performance" delay={0.4} /><Rot13Text originalText="optimize backend performance" delay={0.4} /></div>
+            <div className="flex items-center gap-4"><GoalIcon type="zeroTrust" delay={0.5} /><Rot13Text originalText="ship zero-trust architectures" delay={0.5} /></div>
           </div>
         </div>
       </section>
