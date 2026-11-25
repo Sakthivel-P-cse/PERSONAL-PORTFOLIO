@@ -234,7 +234,7 @@ export const portfolio = {
       dates: "July – August",
       location: "India",
       description:
-        "Worked on AI agent-based management systems for automating business processes, data handling and decision support.",
+        "Built a ticket-based customer support system with escalation workflows and audit history, and an internal policy compliance RAG system using LLMs and vector search.",
     },
   ],
 
