@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="antialiased font-ibm-plex">
-        <main className="relative min-h-screen" style={{ backgroundColor: "#0a0a0a" }}>
+        <main className="relative min-h-screen" style={{ backgroundColor: "#000000" }}>
           <CommandPalette />
           {children}
         </main>

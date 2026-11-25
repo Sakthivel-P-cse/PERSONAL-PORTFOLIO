@@ -10,7 +10,7 @@ export default function Constellation() {
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas?.getContext("2d");
-    if (!canvas || !context || reducedMotion !== false) return;
+    if (!canvas || !context) return;
 
     const nodes = Array.from({ length: 35 }, () => ({
       x: Math.random(), y: Math.random(), dx: (Math.random() - 0.5) * 0.00015, dy: (Math.random() - 0.5) * 0.00015,
@@ -20,6 +20,7 @@ export default function Constellation() {
     const resize = () => {
       canvas.width = canvas.clientWidth;
       canvas.height = canvas.clientHeight;
+      if (reducedMotion !== false) draw();
     };
     const draw = () => {
       context.clearRect(0, 0, canvas.width, canvas.height);
@@ -36,7 +37,8 @@ export default function Constellation() {
         context.fill();
         nodes.slice(i + 1).forEach((other) => {
           const ox = other.x * canvas.width, oy = other.y * canvas.height;
-          if (Math.hypot(x - ox, y - oy) < 140) {
+          // shortcut: density varies with positions, rank edges if an exact count is needed.
+          if (Math.hypot(x - ox, y - oy) < 172) {
             context.beginPath();
             context.moveTo(x, y);
             context.lineTo(ox, oy);
@@ -44,11 +46,11 @@ export default function Constellation() {
           }
         });
       });
-      frame = requestAnimationFrame(draw);
+      if (reducedMotion === false) frame = requestAnimationFrame(draw);
     };
     const update = () => {
       cancelAnimationFrame(frame);
-      if (visible && !document.hidden) frame = requestAnimationFrame(draw);
+      if (visible && !document.hidden && reducedMotion === false) frame = requestAnimationFrame(draw);
     };
     const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; update(); });
     resize();
@@ -63,5 +65,5 @@ export default function Constellation() {
     };
   }, [reducedMotion]);
 
-  return <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full opacity-15" />;
+  return <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none fixed inset-0 h-screen w-full opacity-15" />;
 }

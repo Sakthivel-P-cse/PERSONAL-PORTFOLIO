@@ -66,8 +66,8 @@
 }
 
 @theme {
-  --color-bg: #0a0a0a;
-  --color-black: #0a0a0a;
+  --color-bg: #000000;
+  --color-black: #000000;
   --color-text-bright: #e8e8e8;
   --color-text: #d0d0d0;
   --color-text-dim: #999999;
@@ -95,7 +95,7 @@
 @layer base {
   html,
   body {
-    background-color: #0a0a0a;
+    background-color: #000000;
     min-height: 100%;
   }
 
@@ -127,7 +127,6 @@
 @layer utilities {
   .terminal-hero {
     font-family: var(--font-jetbrains);
-    background: #0a0a0a;
   }
   .terminal-hero,
   .terminal-hero * {
