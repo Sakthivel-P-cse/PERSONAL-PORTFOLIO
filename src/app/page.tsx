@@ -34,7 +34,6 @@ export default function Home() {
             </div>
             
             <div className="hero-identity">
-              <span className="hero-identity-name">{portfolio.name}</span>
               <span className="hero-identity-meta">
                 {portfolio.professions.map((role, i) => (
                   <span key={role}>
