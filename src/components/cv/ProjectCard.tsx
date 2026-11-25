@@ -63,10 +63,19 @@ export default function ProjectCard({ project, index }: { project: Project; inde
           <circle cx="166" cy="61" r="3" fill="#f87171" stroke="none" />
         </g>}
       </svg>
-      <h3 className="text-base font-semibold text-text">{project.name}</h3>
+      <h3 className="break-words text-base font-semibold text-text">{project.name}</h3>
       <p className="mt-1 text-sm text-cyan">{project.subtitle}</p>
-      <p className="mt-3 text-sm leading-relaxed text-text-dim">{project.description}</p>
-      <p className="mt-3 text-xs leading-relaxed text-text-faint">{project.technologies.map((technology) => `[${technology}]`).join(" ")}</p>
+      <p className="mt-3 text-sm leading-relaxed text-text-dim">{project.summary}</p>
+      <p className="mt-3 text-sm leading-relaxed text-text-faint">{project.technologies.slice(0, 3).map((technology) => `[${technology}]`).join(" ")}</p>
+      <details className="mt-3 text-sm text-text-dim print:hidden">
+        <summary className="w-fit cursor-pointer text-cyan focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan">Project details</summary>
+        <p className="mt-3 leading-relaxed">{project.description}</p>
+        <p className="mt-3 leading-relaxed text-text-faint">{project.technologies.map((technology) => `[${technology}]`).join(" ")}</p>
+      </details>
+      <div className="hidden print:block">
+        <p className="mt-3 text-sm leading-relaxed">{project.description}</p>
+        <p className="mt-3 text-sm leading-relaxed">{project.technologies.map((technology) => `[${technology}]`).join(" ")}</p>
+      </div>
       {project.visibility === "public" && <a href={project.repository} target="_blank" rel="noopener noreferrer" className="mt-5 w-fit text-sm text-cyan underline underline-offset-4 hover:text-cyan-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300">View repository <span className="sr-only">for {project.name} (opens in a new tab)</span> ↗</a>}
     </motion.article>
   );

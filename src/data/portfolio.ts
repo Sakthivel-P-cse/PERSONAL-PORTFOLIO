@@ -105,6 +105,7 @@ export const portfolio = {
     {
       id: "viper",
       name: "Viper",
+      summary: "A distributed key-value store designed to keep data consistent across servers.",
       subtitle: "Raft-Based Distributed Key-Value Store",
       description:
         "A distributed key-value service built around the Raft consensus protocol, with linearizable reads and writes, checksummed WAL recovery, snapshots, authenticated gRPC, chaos testing and bounded linearizability checking.",
@@ -129,6 +130,7 @@ export const portfolio = {
     {
       id: "causa",
       name: "CAUSA",
+      summary: "A platform that helps identify the root cause of problems in Kubernetes systems.",
       subtitle: "Observability-Driven Root Cause Analysis Platform",
       description:
         "Kubernetes observability platform for root-cause analysis using Prometheus metrics, Tempo traces and Loki logs. Builds influence graphs with root-cause ranking, anomaly detection, multi-fault isolation and approval-gated remediation.",
@@ -147,6 +149,7 @@ export const portfolio = {
     {
       id: "autobuild",
       name: "AUTOBUILD",
+      summary: "A platform for running durable software engineering workflows with AI agents.",
       subtitle: "Durable Agentic Software Engineering Platform",
       description:
         "Durable agentic workflows with Temporal and PostgreSQL. Integrates GitHub, LangGraph and gVisor with RLS-scoped state, immutable attempts, bounded tool access, replay-safe workflows, deterministic validation, security/crash/cancellation/tamper testing, idempotency and repair workflows.",
@@ -165,6 +168,7 @@ export const portfolio = {
     {
       id: "crdt-rate-limiter",
       name: "CRDT-Based Decentralized Rate Limiter",
+      summary: "A rate limiter that coordinates across nodes without relying on a central server.",
       subtitle: "",
       description:
         "Decentralized rate limiting with an AP distributed architecture using per-epoch G-Counter CRDTs, delta gossip and SWIM membership. Features proportional sliding windows, gRPC, partition testing, AIMD budgets, priority shedding and Prometheus metrics.",
@@ -184,6 +188,7 @@ export const portfolio = {
     {
       id: "trustchain",
       name: "TrustChain",
+      summary: "An authentication system that continuously evaluates trust during a session.",
       subtitle: "Continuous Zero-Trust Authentication",
       description:
         "Zero-trust authentication with short-lived JWTs, RBAC and ABAC, tenant isolation, Redis sessions, mTLS identity, replay protection, continuous trust scoring, session downgrade and session termination.",
@@ -203,6 +208,7 @@ export const portfolio = {
     {
       id: "cit-polling",
       name: "CIT Polling System",
+      summary: "A college polling platform for scheduling, voting and viewing results.",
       subtitle: "",
       description:
         "A college polling platform supporting role-based workflows, scheduling, analytics, real-time updates, Excel export and Google OAuth.",
