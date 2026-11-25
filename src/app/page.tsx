@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
 import dynamic from "next/dynamic";
 import Rot13Text from "@/components/Rot13Text";
 import ObfuscatedLink from "@/components/ObfuscatedLink";
@@ -8,6 +9,7 @@ import GlitchText from "@/components/GlitchText";
 import HeroCursor from "@/components/HeroCursor";
 import BootSequence from "@/components/BootSequence";
 import HeroNetwork from "@/components/home/HeroNetwork";
+import HeroBackdrop from "@/components/home/HeroBackdrop";
 import GoalIcon from "@/components/home/GoalIcon";
 import ScrollTrace from "@/components/home/ScrollTrace";
 import ContactIcon from "@/components/home/ContactIcon";
@@ -17,13 +19,15 @@ const Constellation = dynamic(() => import("@/components/home/Constellation"), {
 
 export default function Home() {
   const reducedMotion = useReducedMotion();
+  const hero = useRef<HTMLElement>(null);
 
   return (
     <>
       <BootSequence />
       <HeroCursor />
       <ScrollTrace />
-      <section className="relative min-h-screen overflow-hidden terminal-hero flex flex-col justify-center items-center md:block">
+      <section ref={hero} className="relative min-h-screen overflow-hidden terminal-hero flex flex-col justify-center items-center md:block">
+        <HeroBackdrop hero={hero} />
         <Constellation />
         <div className="relative z-10 w-[90%] max-w-6xl mx-auto pt-16 pb-16 md:pt-[32vh] md:pb-32">
           <div className="space-y-5 md:space-y-4">
