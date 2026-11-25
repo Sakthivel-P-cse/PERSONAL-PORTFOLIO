@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import type { Project } from "@/data/portfolio";
 
 export default function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const [branch, setBranch] = useState(0);
   const reducedMotion = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref);
@@ -15,20 +16,34 @@ export default function ProjectCard({ project, index }: { project: Project; inde
       whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
       transition={{ duration: reducedMotion === false ? 0.5 : 0, delay: reducedMotion === false ? index * 0.12 : 0 }}
       className="min-w-0 border border-rule bg-rule-soft p-4">
-      <svg aria-hidden="true" viewBox="0 0 240 100" className="mb-3 h-16 w-40 max-w-full" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <svg aria-hidden="true" viewBox={project.id === "autobuild" ? "-25 0 290 100" : "0 0 240 100"} className="mb-3 h-16 w-40 max-w-full" fill="none" strokeLinecap="round" strokeLinejoin="round">
         {project.id === "viper" && <g stroke="#22d3ee" strokeWidth="1.5">
           <path opacity=".4" d="M45 50h65M110 50l70-30M110 50h70M110 50l70 30" />
           {[20, 50, 80].map((y) => <g key={y}><rect x="180" y={y - 9} width="35" height="18" rx="2" /><path d={`M186 ${y - 3}h15m-15 6h22`} /></g>)}
           <circle cx="45" cy="50" r="9" /><circle cx="110" cy="50" r="5" fill="#22d3ee" />
+          <motion.circle key={branch} r="3" fill="#22d3ee" stroke="none" initial={false}
+            animate={animate ? { cx: [45, 110, 180], cy: [50, 50, [20, 50, 80][branch]], opacity: [0, 1, 0] } : { cx: 110, cy: 50, opacity: 0 }}
+            transition={animate ? { duration: 3, ease: "linear" } : { duration: 0 }}
+            onAnimationComplete={() => { if (animate) setBranch((branch + 1 + Math.floor(Math.random() * 2)) % 3); }} />
         </g>}
         {project.id === "causa" && <g strokeWidth="1.5">
           <path stroke="#22d3ee" opacity=".4" d="M35 50 90 20l60 30-60 30-55-30M90 20l110 0M90 80l110 0M150 50l50-30" />
-          <path stroke="#f87171" d="M35 50h115l50 30" />
+          <path stroke="#f87171" d={["M35 50h115l50 30", "M35 50 90 20h110", "M35 50 90 80h110"][branch]} />
+          <motion.circle key={branch} r="3" fill="#f87171" stroke="none" initial={false}
+            animate={animate ? { cx: branch === 0 ? [35, 150, 200] : [35, 90, 200], cy: branch === 0 ? [50, 50, 80] : [50, branch === 1 ? 20 : 80, branch === 1 ? 20 : 80], opacity: [0, 1, 0] } : { cx: 35, cy: 50, opacity: 0 }}
+            transition={animate ? { duration: 3, ease: "linear" } : { duration: 0 }}
+            onAnimationComplete={() => { if (animate) setBranch((branch + 1 + Math.floor(Math.random() * 2)) % 3); }} />
           {[[35, 50], [90, 20], [90, 80], [150, 50], [200, 20], [200, 80]].map(([x, y], i) => <circle key={i} cx={x} cy={y} r="5" fill="#0a0a0a" stroke={i === 0 || i === 3 || i === 5 ? "#f87171" : "#22d3ee"} />)}
         </g>}
         {project.id === "autobuild" && <g stroke="#22d3ee" strokeWidth="1.5">
-          <path opacity=".4" d="M30 50h180" />
+          <path opacity=".4" d="M-10 50h260" />
+          <circle cx="-10" cy="50" r="7" fill="#0a0a0a" />
+          <circle cx="250" cy="50" r="7" fill="#0a0a0a" />
+          <path opacity=".55" d="M150 38V16H90v22m-4-5 4 5 4-5M210 62v22H30V62m-4 5 4-5 4 5" />
           {[30, 90, 150, 210].map((x) => <rect key={x} x={x - 12} y="38" width="24" height="24" rx="3" fill="#0a0a0a" />)}
+          <motion.circle r="3" fill="#22d3ee" stroke="none" initial={false}
+            animate={animate ? { cx: [-10, 30, 90, 150, 150, 90, 90, 150, 210, 210, 30, 30, 90, 150, 210, 250], cy: [50, 50, 50, 50, 16, 16, 50, 50, 50, 84, 84, 50, 50, 50, 50, 50], opacity: [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0] } : { cx: -10, cy: 50, opacity: 0 }}
+            transition={animate ? { duration: 12, repeat: Infinity, ease: "linear" } : { duration: 0 }} />
         </g>}
         {project.id === "crdt-rate-limiter" && <g stroke="#22d3ee" strokeWidth="1.5">
           <path opacity=".4" d="M40 50 80 20h80l40 30-80 30-80-30m40-30 40 60 40-60M40 50h160" />
@@ -36,9 +51,10 @@ export default function ProjectCard({ project, index }: { project: Project; inde
             <rect x={x - 13} y={y - 9} width="26" height="18" rx="3" fill="#0a0a0a" />
             <path d={`M${x - 8} ${y + 3}h${8 + i * 2}`} stroke={i === 2 ? "#f87171" : "#22d3ee"} strokeWidth="3" />
           </g>)}
-          <motion.circle r="2.5" fill="#f87171" stroke="none" cx="40" cy="50"
-            animate={animate ? { cx: [40, 80, 160, 200], cy: [50, 20, 20, 50] } : { cx: 80, cy: 20 }}
-            transition={animate ? { duration: 8, repeat: Infinity, ease: "linear" } : { duration: 0 }} />
+          <motion.circle key={branch} r="2.5" fill="#f87171" stroke="none" initial={false}
+            animate={animate ? { cx: [[40, 80, 160, 200], [40, 120, 200], [40, 80, 120, 160, 200]][branch], cy: [[50, 20, 20, 50], [50, 80, 50], [50, 20, 80, 20, 50]][branch], opacity: [0, 1, 0] } : { cx: 40, cy: 50, opacity: 0 }}
+            transition={animate ? { duration: 4, ease: "linear" } : { duration: 0 }}
+            onAnimationComplete={() => { if (animate) setBranch((branch + 1 + Math.floor(Math.random() * 2)) % 3); }} />
         </g>}
         {project.id === "trustchain" && <g stroke="#22d3ee" strokeWidth="1.5">
           <path opacity=".4" d="M28 40h144M187 70a20 20 0 0 1 40 0" />
@@ -46,6 +62,10 @@ export default function ProjectCard({ project, index }: { project: Project; inde
             <rect x={x - 14} y="26" width="28" height="28" rx="5" fill="#0a0a0a" stroke={i === 2 ? "#f87171" : "#22d3ee"} />
             <text x={x} y="44" textAnchor="middle" fill={i === 2 ? "#f87171" : "#22d3ee"} stroke="none" fontSize="9">{["T", "P", "S", "D"][i]}</text>
           </g>)}
+          <motion.circle key={branch} r="2.5" fill="#22d3ee" stroke="none" cy="40" initial={false}
+            animate={animate ? { cx: [[28, 76, 124, 172], [172, 124, 76, 28], [76, 124, 172]][branch], opacity: [0, 1, 0] } : { cx: 28, opacity: 0 }}
+            transition={animate ? { duration: 4, ease: "linear" } : { duration: 0 }}
+            onAnimationComplete={() => { if (animate) setBranch((branch + 1 + Math.floor(Math.random() * 2)) % 3); }} />
           <path d="M191 70a16 16 0 0 1 27-12" stroke="#f87171" />
           <motion.path d="M207 70l-8-10" stroke="#f87171" style={{ originX: "207px", originY: "70px" }}
             animate={animate ? { rotate: [0, 18, 0] } : { rotate: 0 }}
