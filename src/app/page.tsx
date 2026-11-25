@@ -29,7 +29,7 @@ export default function Home() {
           <div className="space-y-5 md:space-y-4">
             <div className="hero-title screen-tear">
               <span className="relative inline-block">
-                <span className="relative z-10">&gt; sakthi/</span>
+                <span className="relative z-10">&gt; sakthi/<span aria-hidden="true" className="hero-terminal-cursor" /></span>
               </span>
             </div>
             

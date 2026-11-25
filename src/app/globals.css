@@ -466,3 +466,10 @@
     }
   }
 }
+
+@layer components {
+  .hero-terminal-cursor { display: inline-block; width: .12em; height: .8em; margin-left: .1em; vertical-align: -.03em; background: var(--color-cyan); }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-terminal-cursor { animation: boot-cursor-pulse 1.2s steps(2, jump-none) infinite; }
+  }
+}
