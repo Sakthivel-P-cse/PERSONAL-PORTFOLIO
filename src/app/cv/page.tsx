@@ -165,11 +165,11 @@ export default function CVPage() {
               <h2 className="text-xl font-bold">EDUCATION</h2>
             </div>
             <div className="pl-8 space-y-2">
-              <div className="flex justify-between">
+              <div className="flex flex-col gap-1 sm:flex-row sm:justify-between sm:gap-4">
                 <span className="font-semibold text-text">{portfolio.education.institution}</span>
                 <span className="text-text-dim">{portfolio.education.dates.toLowerCase()}</span>
               </div>
-              <div className="flex justify-between text-text-dim">
+              <div className="flex flex-col gap-1 text-text-dim sm:flex-row sm:justify-between sm:gap-4">
                 <span>{portfolio.education.degree}, cgpa: {portfolio.education.cgpa}</span>
                 <span>{portfolio.education.location}</span>
               </div>
@@ -184,17 +184,17 @@ export default function CVPage() {
             <div className="pl-8 space-y-6">
               {portfolio.experience.map((exp, i) => (
                 <div key={i} className="group cursor-pointer">
-                  <div className="flex justify-between items-center text-text hover:text-cyan transition-colors">
+                  <div className="flex flex-col gap-1 text-text hover:text-cyan transition-colors sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                     <div className="flex items-center gap-2">
                       <span className="font-semibold">{exp.role}</span>
                     </div>
                     <span className="text-text-dim">{exp.dates.toLowerCase()} [+]</span>
                   </div>
-                  <div className="flex justify-between text-text-dim mt-1">
+                  <div className="mt-1 flex flex-col gap-1 text-text-dim sm:flex-row sm:justify-between sm:gap-4">
                     <span>{exp.company}</span>
                     <span>{exp.location.toLowerCase()}</span>
                   </div>
-                  <p className="text-text-dim text-xs mt-2 opacity-80">{exp.description.toLowerCase()}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-text-dim">{exp.description.toLowerCase()}</p>
                 </div>
               ))}
             </div>
@@ -224,7 +224,7 @@ export default function CVPage() {
                   <h3 className="relative z-10 text-base text-text transition-colors duration-300 group-hover:text-cyan">
                     {card.title}
                   </h3>
-                  <p className="relative z-10 mt-2 text-xs leading-relaxed text-text-dim">
+                  <p className="relative z-10 mt-2 text-sm leading-relaxed text-text-dim">
                     {card.concepts}
                   </p>
                 </article>
@@ -245,7 +245,7 @@ export default function CVPage() {
           <div className="sticky top-8 space-y-8">
             <TableOfContents />
 
-            <div className="space-y-4 text-xs font-mono bg-rule-soft p-4 rounded border border-rule">
+            <div className="space-y-4 text-sm font-mono bg-rule-soft p-4 rounded border border-rule">
               <div className="text-text-faint mb-2">STATUS</div>
               
               <div className="grid grid-cols-[50px_1fr] gap-2">
@@ -260,7 +260,7 @@ export default function CVPage() {
 
               <div className="grid grid-cols-[50px_1fr] gap-2">
                 <span className="text-text-faint">mail</span>
-                <a href={`mailto:${portfolio.social.email}`} className="text-text hover:text-cyan transition-colors truncate">
+                <a href={`mailto:${portfolio.social.email}`} className="break-all text-text hover:text-cyan transition-colors">
                   {portfolio.social.email}
                 </a>
               </div>
