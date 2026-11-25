@@ -268,7 +268,7 @@ export default function CVPage() {
               <div className="grid grid-cols-[50px_1fr] gap-2">
                 <span className="text-text-faint">git</span>
                 <a href={portfolio.social.github} className="text-text hover:text-cyan transition-colors truncate">
-                  @sakthivel
+                  @{portfolio.social.github.split("/").filter(Boolean).pop()}
                 </a>
               </div>
 
