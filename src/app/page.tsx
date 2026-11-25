@@ -30,7 +30,7 @@ export default function Home() {
         <HeroBackdrop hero={hero} />
         <Constellation />
         <div className="relative z-10 w-[90%] max-w-6xl mx-auto pt-16 pb-16 md:pt-[32vh] md:pb-32">
-          <div className="space-y-5 md:space-y-4">
+          <div className="space-y-5 pl-2 md:space-y-4 md:pl-20">
             <div className="hero-title screen-tear">
               <span className="relative inline-block">
                 <span className="relative z-10">&gt; sakthi/<span aria-hidden="true" className="hero-terminal-cursor" /></span>
@@ -41,7 +41,7 @@ export default function Home() {
               <span className="hero-identity-meta">
                 {portfolio.professions.map((role, i) => (
                   <span key={role}>
-                    {i > 0 && <span className="hero-identity-sep"> · </span>}
+                    {i > 0 && <><span className="hero-identity-sep"> · </span>{" "}</>}
                     {role}
                   </span>
                 ))}

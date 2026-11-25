@@ -1,6 +1,12 @@
 .backdrop {
   position: absolute;
   inset: 0;
+  width: 62vw;
+  height: 62vh;
+  margin: auto;
+  overflow: hidden;
+  border: 1px solid rgba(0, 255, 213, .25);
+  box-shadow: 0 0 28px rgba(0, 255, 213, .06), inset 0 0 40px rgba(0, 0, 0, .35);
   pointer-events: none;
   transform-origin: center center;
   background:
@@ -22,4 +28,8 @@
     from { transform: translateY(-100%); }
     to { transform: translateY(100%); }
   }
+}
+
+@media (max-width: 767px) {
+  .backdrop { width: 88vw; height: 62vh; }
 }
