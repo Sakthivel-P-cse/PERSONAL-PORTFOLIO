@@ -58,10 +58,9 @@ export default function CommandPalette() {
 
   return <>
     <nav className="site-nav" aria-label="Primary navigation">
-      <Link href="/cv#projects" aria-current={active === "projects" ? "location" : undefined}>projects</Link>
-      <Link href="/#contact" aria-current={active === "contact" ? "location" : undefined}>contact</Link>
       <Link href="/links">links</Link>
       <Link href="/cv">cv</Link>
+      <Link href="/#contact" aria-current={active === "contact" ? "location" : undefined}>contact</Link>
       <button type="button" onClick={() => setOpen(true)} aria-label="Open command palette">⌘ K</button>
     </nav>
     {open && <div className="command-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) close(); }}>
