@@ -140,8 +140,6 @@ export default function Home() {
                 <div className="flex gap-4 md:gap-6 flex-wrap">
                   <span className="inline-flex items-center gap-2"><ContactIcon type="github" /><ObfuscatedLink href={portfolio.social.github} label="github" external /></span>
                   <span className="inline-flex items-center gap-2"><ContactIcon type="linkedin" /><ObfuscatedLink href={portfolio.social.linkedin} label="linkedin" external /></span>
-                  <span className="inline-flex items-center gap-2"><ContactIcon type="cv" /><ObfuscatedLink href="/cv" label="cv" /></span>
-                  <span className="inline-flex items-center gap-2"><ContactIcon type="links" /><ObfuscatedLink href="/links" label="links" /></span>
                 </div>
               </div>
             </div>
