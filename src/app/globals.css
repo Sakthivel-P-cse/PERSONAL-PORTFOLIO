@@ -70,8 +70,8 @@
   --color-black: #0a0a0a;
   --color-text-bright: #e8e8e8;
   --color-text: #d0d0d0;
-  --color-text-dim: #888888;
-  --color-text-faint: #808080;
+  --color-text-dim: #999999;
+  --color-text-faint: #999999;
   --color-text-trace: #333333;
   --color-rule: #222222;
   --color-rule-soft: #1a1a1a;
@@ -471,5 +471,7 @@
   .hero-terminal-cursor { display: inline-block; width: .12em; height: .8em; margin-left: .1em; vertical-align: -.03em; background: var(--color-cyan); }
   @media (prefers-reduced-motion: no-preference) {
     .hero-terminal-cursor { animation: boot-cursor-pulse 1.2s steps(2, jump-none) infinite; }
+    a:focus-visible, button:focus-visible { transition: color .16s ease, outline-color .16s ease; }
   }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--color-cyan); outline-offset: 4px; }
 }
