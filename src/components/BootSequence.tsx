@@ -47,8 +47,8 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
     const skipButton = skipRef.current;
     skipButton?.focus();
     const totalLines = portfolio.bootSequence.length;
-    const lineInterval = 250;
-    const totalDuration = 2000;
+    const lineInterval = 150;
+    const totalDuration = 1200;
 
     const lineTimer = setInterval(() => {
       setVisibleLines((prev) => {

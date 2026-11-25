@@ -34,7 +34,6 @@ export default function Home() {
             </div>
             
             <div className="hero-identity">
-              <span className="hero-identity-name">{portfolio.name}</span>
               <span className="hero-identity-meta">
                 {portfolio.professions.map((role, i) => (
                   <span key={role}>
@@ -48,12 +47,12 @@ export default function Home() {
           <HeroNetwork />
           
           <div className="md:hidden hero-quote hero-quote--inline text-right">
-            <div className="screen-tear">
-            <GlitchText intensity="extreme" randomGlitchInterval={1500} initialScramble initialScrambleDuration={900}>
+            <div>
+            <GlitchText intensity="low" initialScramble initialScrambleDuration={400}>
               Building systems that
             </GlitchText>
             <br />
-            <GlitchText intensity="extreme" randomGlitchInterval={1500} initialScramble initialScrambleDuration={900}>
+            <GlitchText intensity="low" initialScramble initialScrambleDuration={400}>
               {"don't fail when you need them."}
             </GlitchText>
             </div>
@@ -61,12 +60,12 @@ export default function Home() {
         </div>
         
         <div className="hidden md:block absolute z-10 hero-quote text-right max-w-md" style={{ right: "3rem", bottom: "76px" }}>
-          <div className="screen-tear">
-          <GlitchText intensity="extreme" randomGlitchInterval={1500} initialScramble initialScrambleDuration={900}>
+          <div>
+          <GlitchText intensity="low" initialScramble initialScrambleDuration={400}>
             Building systems that
           </GlitchText>
           <br />
-          <GlitchText intensity="extreme" randomGlitchInterval={1500} initialScramble initialScrambleDuration={900}>
+          <GlitchText intensity="low" initialScramble initialScrambleDuration={400}>
             {"don't fail when you need them."}
           </GlitchText>
           </div>
