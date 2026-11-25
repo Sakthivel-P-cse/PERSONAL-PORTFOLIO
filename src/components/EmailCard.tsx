@@ -5,15 +5,14 @@ import { portfolio } from "@/data/portfolio";
 
 export default function EmailCard() {
   const [open, setOpen] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [status, setStatus] = useState("");
 
   async function copy() {
     try {
       await navigator.clipboard.writeText(portfolio.email);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1_600);
+      setStatus("Email copied");
     } catch {
-      setCopied(false);
+      setStatus("Could not copy email");
     }
   }
 
@@ -52,8 +51,9 @@ export default function EmailCard() {
               onClick={copy}
               className="text-xs text-cyan transition-colors hover:text-text"
             >
-              {copied ? "copied" : "copy"}
+              copy
             </button>
+            <span role="status" className="block text-xs text-text">{status}</span>
           </div>
         </div>
       )}
