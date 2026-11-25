@@ -188,7 +188,7 @@ export default function CVPage() {
                     <div className="flex items-center gap-2">
                       <span className="font-semibold">{exp.role}</span>
                     </div>
-                    <span className="text-text-dim">{exp.dates.toLowerCase()} [+]</span>
+                    <span className="text-text-dim">{exp.dates.toLowerCase()}</span>
                   </div>
                   <div className="mt-1 flex flex-col gap-1 text-text-dim sm:flex-row sm:justify-between sm:gap-4">
                     <span>{exp.company}</span>
