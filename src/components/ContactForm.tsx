@@ -109,7 +109,7 @@ export default function ContactForm() {
             ? "◎ MESSAGE SENT — THANKS."
             : status === "error"
               ? `ERROR — ${errorMessage}`
-              : "◎ THANKS — I'LL REPLY SOON."}
+              : "◎ SEND A MESSAGE TO GET IN TOUCH."}
         </p>
 
         <button
