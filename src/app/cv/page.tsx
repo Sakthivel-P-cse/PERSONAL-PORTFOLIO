@@ -198,6 +198,14 @@ export default function CVPage() {
                 </div>
               ))}
             </div>
+            <ol aria-label="Experience timeline" className={`${styles.screenOnly} ml-8 border-l border-cyan pl-5 space-y-4`}>
+              {portfolio.experience.map((exp) => (
+                <li key={exp.company} className="relative before:absolute before:-left-[25px] before:top-2 before:h-2 before:w-2 before:bg-cyan">
+                  <span className="text-text-dim text-sm">{exp.dates}</span>
+                  <p className="text-text">{exp.role} · {exp.company}</p>
+                </li>
+              ))}
+            </ol>
           </RevealSection>
 
           <FeaturedProjects />
