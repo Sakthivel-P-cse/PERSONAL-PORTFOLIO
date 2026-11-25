@@ -74,18 +74,6 @@ export default function Home() {
 
       <section id="manifesto" className="relative min-h-screen flex items-center justify-center py-24 md:py-32">
         <div className="relative w-[90%] max-w-4xl mx-auto px-4 md:px-0">
-          <svg aria-hidden="true" viewBox="0 0 300 100" className="absolute right-4 top-0 h-12 w-36 text-cyan md:right-0">
-            <motion.path
-              d="M25 65L90 25L150 60L210 22L275 60M90 25L120 82L210 22"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              initial={reducedMotion ? false : { pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: reducedMotion ? 0 : 1.5 }}
-            />
-          </svg>
           <motion.h2 
             initial={reducedMotion ? false : { opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
