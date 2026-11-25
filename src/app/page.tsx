@@ -138,8 +138,8 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row sm:gap-8 items-start sm:items-center">
                 <span className="w-24 block sm:inline-block mb-1 sm:mb-0 text-text-faint">network</span>
                 <div className="flex gap-4 md:gap-6 flex-wrap">
-                  <span className="inline-flex items-center gap-2"><ContactIcon type="github" /><ObfuscatedLink href={portfolio.social.github} label="github" external /></span>
-                  <span className="inline-flex items-center gap-2"><ContactIcon type="linkedin" /><ObfuscatedLink href={portfolio.social.linkedin} label="linkedin" external /></span>
+                  <span className="inline-flex items-center gap-2"><ContactIcon type="github" /><ObfuscatedLink href={portfolio.social.github} label={portfolio.social.github.split("/").filter(Boolean).pop()!} external /></span>
+                  <span className="inline-flex items-center gap-2"><ContactIcon type="linkedin" /><ObfuscatedLink href={portfolio.social.linkedin} label={portfolio.name} external /></span>
                 </div>
               </div>
             </div>
